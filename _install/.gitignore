@@ -1,0 +1,30 @@
+_configuration.sh
+.parcel-cache
+.cache
+dist
+node_modules
+package-lock.json
+yarn.lock
+# théoriquement ce fichier n'est pas ignoré, mais étant donné que c'est parcel qui nous le génère (dans le cas présent), nous préférons l'ignorer afin de ne pas avoir de conflits
+package.json
+# git ignore pour la partie wordpress php====================
+vendor
+wp
+composer.lock
+wp-config.php
+.htaccess
+# nous demandons à git d'ignorer tout ce qui se trouve dans le dossier wp-content
+# Attention à utiliser des chemins "complets"
+/public/wp-content/*
+# mais nous demandons à git de quand même surveiller wp-content
+!/public/wp-content
+# nous demandons à git d'ignorer tout ce qui se trouve dans le dossier wp-content/themes
+/public/wp-content/themes/*
+# mais nous demandons à git de quand même surveiller wp-content/themes
+!/public/wp-content/themes
+# dans theme, n'ignore pas oprofile
+!/public/wp-content/themes/oprofile
+/public/wp-content/plugins/*
+!/public/wp-content/plugins
+# nous désignorons le  plugin oprofile
+!/public/wp-content/plugins/oprofile
