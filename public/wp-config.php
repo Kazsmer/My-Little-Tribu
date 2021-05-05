@@ -79,8 +79,6 @@ $table_prefix = 'wp_';
  */
 define( 'WP_DEBUG', true );
 
-
-
     define('WP_HOME', rtrim ( 'http://localhost/projet-my-little-tribu/public', '/' ));
     define('WP_SITEURL', WP_HOME . '/wp');
     define('WP_CONTENT_URL', WP_HOME . '/wp-content');
