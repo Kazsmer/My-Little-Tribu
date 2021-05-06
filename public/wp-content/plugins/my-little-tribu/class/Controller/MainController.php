@@ -12,7 +12,7 @@ class MainController
 
     public function authentificateUser($userId)
     {
-              wp_clear_auth_cookie();
+        wp_clear_auth_cookie();
         wp_set_current_user($userId);
         wp_set_auth_cookie($userId);
     }

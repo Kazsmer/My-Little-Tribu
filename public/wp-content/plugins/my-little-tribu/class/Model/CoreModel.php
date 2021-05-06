@@ -2,7 +2,8 @@
 
 namespace MyLittleTribu\Model;
 
-// cette classe va nous permettre de mutualiser certains traitement sur la base de donnée
+// cette classe va nous permettre de mutualiser certains traitements sur la base de donnée
+
 abstract class CoreModel
 {
 
@@ -12,8 +13,6 @@ abstract class CoreModel
 
     public function __construct()
     {
-        // pas très propre, mais c'est ainsi en wordpress
-        // $wpdb est du type wpdb
         // DOC wpdb https://developer.wordpress.org/reference/classes/wpdb/
         global $wpdb;
 

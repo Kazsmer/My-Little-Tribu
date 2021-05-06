@@ -2,14 +2,54 @@
 
 namespace MyLittleTribu;
 
+use MyLittleTribu\Model\TribeModel;
+use MyLittleTribu\Router;
+
+
 class Plugin
 {
 
     public function __construct()
     {
-        add_action('init', [$this, 'createCustomPostTypes']);
-        add_action('init', [$this, 'createCustomTaxonomies']);
+        $this->initialize();
+        
     }
+
+    public static function activate()
+    {
+        // enregistrement des rôles spécifiques à oProfile
+        // $customRole = new CustomRole();
+        // $customRole->register();
+
+        // création des tables en bdd
+        $tribeModel = new TribeModel();
+        $tribeModel->createTable();
+    }
+
+    public static function deactivate()
+    {
+        // $customRole = new CustomRole();
+        // $customRole->unregister();
+
+        // suppresion des tables en bdd (attention ceci est à titre pédagogique)
+        $tribeModel = new TribeModel();
+        $tribeModel->dropTable();
+    }
+
+   protected function initialize()
+   {
+       // au moment de l'initialisation de wordpress, nous enregistrons les custom post types et les custom taxonomies dont nous avons besoin
+
+       // $photo = new PhotoModel();
+       //$photo->initialize();
+
+       $tribe = new TribeModel();
+       $tribe->initialize();
+
+       add_action('init', [$this, 'createCustomPostTypes']);
+       add_action('init', [$this, 'createCustomTaxonomies']);
+       
+   }
 
     public function createCustomPostTypes()
     {
@@ -21,6 +61,9 @@ class Plugin
                 'public' => true,   // le cpt pourra être édité depuis le bo
                 'hierarchical' => false,
                 'show_in_rest' =>  true,    // notre cpt sera accessible depuis l'api rest de wp
+                'singular_name' => 'Photo',
+                'add_new_item' => 'Ajouter une photo',
+
                 'supports' => [
                     'title',
                     'editor',
@@ -160,10 +203,12 @@ class Plugin
         );
     }
 
-    /* public function createCustomRoles()
+   
+/*    public function createCustomRoles()
     {
         // 1er agument l'idenfiant du rôle, second argument le libellé
-        add_role('cook', 'Cuisinier');
+        add_role('guest', 'Invite');
+        add_role('creator', 'Createur');
     }
 
 
@@ -175,7 +220,7 @@ class Plugin
 
     public function deactivate()
     {
-        remove_role('cook');
+        remove_role('guest');
     }
 
     */

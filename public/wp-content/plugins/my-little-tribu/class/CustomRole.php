@@ -4,7 +4,6 @@ namespace MyLittleTribu;
 
 class CustomRole
 {
-// voir Oprofile !!
 
 public function register()
 {

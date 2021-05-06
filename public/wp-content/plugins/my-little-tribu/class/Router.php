@@ -29,13 +29,13 @@ class Router
                 - avec optionnellement un / (caractère ? signifie optionnel)
                 - et l'url se termine (caratère $ === fin de chaine)
 
-            */
+            
             'user/login/?$',
             // second paramètre : vers quelle "url virtuelle" wordpress interprète l'url demandée par le visiteur
             'index.php?custom-route=user-login',
             // nous mettons le route en haut de la pile de priorité des routes
             'top'
-        );
+        )
 
 /*
         add_rewrite_rule(

@@ -2,6 +2,7 @@
 
 namespace MyLittleTribu\Controller;
 
+/*
 // IMPORTANT : A MODIFIER
 use MyLittleTribu\Model\ !!!
 
