@@ -1,5 +1,7 @@
 <?php
 
+/*
+
 namespace MyLittleTribu\Model;
 
 use WP_Query;
@@ -51,4 +53,4 @@ class WPUserModel
     }
 }
 
-
+*/

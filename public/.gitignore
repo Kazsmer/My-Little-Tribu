@@ -13,8 +13,8 @@ wp
 wp-config.php
 wp-config.php.bak
 
-wp-content/*
-!wp-content
+#wp-content/*
+#!wp-content
 
 # wp-content/themes/*
 # !wp-content/themes

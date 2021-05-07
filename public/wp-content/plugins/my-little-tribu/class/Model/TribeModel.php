@@ -1,5 +1,7 @@
 <?php
 
+/*
+
 namespace MyLittleTribu\Model;
 
 use WP_Query;
@@ -122,7 +124,7 @@ class TribeModel extends CoreModel
     {
         return $this->$propertyName = $value;
     }
-    */
+
 
 
 
@@ -205,3 +207,6 @@ class TribeModel extends CoreModel
         return $this;
     }
 }
+
+
+*/

@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace MyLittleTribu;
 
 class CustomRole
@@ -68,3 +68,5 @@ public function unregister()
 
 
 }
+
+*/

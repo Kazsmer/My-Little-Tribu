@@ -2,20 +2,22 @@
 
 namespace MyLittleTribu;
 
-use MyLittleTribu\Model\TribeModel;
-use MyLittleTribu\Router;
+//use MyLittleTribu\Model\TribeModel;
+//use MyLittleTribu\Router;
 
 
 class Plugin
 {
 
-    public function __construct()
+   /* public function __construct()
     {
         $this->initialize();
         
     }
 
-    public static function activate()
+    */
+
+    /*public static function activate()
     {
         // enregistrement des rôles spécifiques à oProfile
         // $customRole = new CustomRole();
@@ -45,11 +47,14 @@ class Plugin
 
        $tribe = new TribeModel();
        $tribe->initialize();
+       
 
        add_action('init', [$this, 'createCustomPostTypes']);
        add_action('init', [$this, 'createCustomTaxonomies']);
        
    }
+
+   */
 
     public function createCustomPostTypes()
     {
@@ -89,11 +94,15 @@ class Plugin
                     'editor',
                     'thumbnail',
                     'author',
-                    'custom-fields',
+                    'custom-fields'
                 ]
             ]
         );
-    }
+    }    
+
+
+    add_action('init','createCustomPostTypes')
+
 
        /*
         // STEP plugin : déclaration de post custom metadata
