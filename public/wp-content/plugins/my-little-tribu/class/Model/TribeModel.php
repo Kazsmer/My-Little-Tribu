@@ -1,7 +1,5 @@
 <?php
 
-/*
-
 namespace MyLittleTribu\Model;
 
 use WP_Query;
@@ -22,7 +20,7 @@ class TribeModel extends CoreModel
         return 'tribe';
     }
 
-    public function loadById($id)
+   /* public function loadById($id)
     {
         $sql = "
             SELECT * FROM " . $this->getTableName() . "
@@ -33,87 +31,13 @@ class TribeModel extends CoreModel
         $object = $results[0];
 
 
-        foreach($object as $property => $value) {
+        foreach ($object as $property => $value) {
             $this->$property = $value;
         }
         return $this;
     }
 
-   /*
-    public function getCustomersByProjectId($projectId)
-    {
-        $sql = "
-            SELECT * FROM " . $this->getTableName() . "
-            WHERE `project_id`=%d;
-        ";
-
-        $results = $this->execute($sql, [$projectId]);
-
-
-        $customerProjectResults = [];
-
-        foreach($results as $values) {
-            $result = new CustomerProjectModel();
-            foreach($values as $property => $value) {
-                $result->$property = $value;
-            }
-
-            $customerProjectResults[] = $result;
-        }
-
-        // nous retournons la liste des résultats
-        return $customerProjectResults;
-    }
-
-
-    public function getProjectByCustomerId($customerId)
-    {
-        $sql = "
-            SELECT * FROM " . $this->getTableName() . "
-            WHERE `customer_id`=%d;
-        ";
-
-        $results = $this->execute($sql, [$customerId]);
-
-        $customerProjectResults = [];
-
-
-        foreach($results as $values) {
-            $result = new CustomerProjectModel();
-
-            foreach($values as $property => $value) {
-                $result->$property = $value;
-            }
-            $customerProjectResults[] = $result;
-        }
-        return $customerProjectResults;
-    }
     
-
-    public function getCustomer()
-    {
-        $options = [
-            'post_type' => 'any',
-            'post__in'=> [$this->customer_id]
-        ];
-
-        $wpQuery = new WP_Query($options);
-        $posts = $wpQuery->posts;
-        return $posts[0];
-    }
-
-    public function getProject()
-    {
-        $options = [
-            'post_type' => 'any',
-            'post__in'=> [$this->project_id]
-        ];
-        $wpQuery = new WP_Query($options);
-        $posts = $wpQuery->posts;
-        return $posts[0];
-    }
-
-
 
     public function get($propertyName)
     {
@@ -125,7 +49,7 @@ class TribeModel extends CoreModel
         return $this->$propertyName = $value;
     }
 
-
+    */
 
 
     // cette fonction va créer la table en base de donnée
@@ -207,6 +131,3 @@ class TribeModel extends CoreModel
         return $this;
     }
 }
-
-
-*/
