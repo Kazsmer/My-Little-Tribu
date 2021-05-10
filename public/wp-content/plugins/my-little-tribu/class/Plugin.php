@@ -22,8 +22,8 @@ class Plugin
         // $photo = new PhotoModel();
         //$photo->initialize();
  
-        // $tribe = new TribeModel();
-        // $tribe->initialize();
+         //$tribe = new TribeModel();
+         //$tribe->initialize();
 
         $router = new Router();
  
@@ -67,6 +67,8 @@ class Plugin
                 'singular_name' => 'Photo',
                 'add_new_item' => 'Ajouter une photo',
 
+                //'capability_type' => 'photo',
+
                 'supports' => [
                     'title',
                     'editor',
@@ -85,8 +87,12 @@ class Plugin
                 'public' => true,   // le cpt pourra être édité depuis le bo
                 'hierarchical' => false,
                 'show_in_rest' =>  true,    // notre cpt sera accessible depuis l'api rest de wp
+                'show_in_menu' => true,
+                
                 //'capability_type' => 'tribe',
                
+                //'map_meta_cap' => true,
+
                 'supports' => [
                     'title',
                     'editor',

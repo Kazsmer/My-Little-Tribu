@@ -25,6 +25,6 @@ class TestController extends MainController
     {
         $participation = new TribeModel();
 
-       // echo $participation->loadById(1)->get('id');
+       //echo $participation->loadById(1)->get('id');
     }     
 }

@@ -20,7 +20,7 @@ class TribeModel extends CoreModel
         return 'tribe';
     }
 
-   /* public function loadById($id)
+   public function loadById($id)
     {
         $sql = "
             SELECT * FROM " . $this->getTableName() . "
@@ -49,29 +49,29 @@ class TribeModel extends CoreModel
         return $this->$propertyName = $value;
     }
 
-    */
 
 
     // cette fonction va créer la table en base de donnée
     public function createTable()
     {
-        // TIPS $wpdb->prefix permet de récupérer le préfixe des table wordpress
         $sql = "
             CREATE TABLE IF NOT EXISTS `" . $this->getTableName(). "` (
                 `id` INT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
                 `user_id` INT(8) UNSIGNED NOT NULL,
-                `creator_id` INT(8) UNSIGNED NOT NULL,
-                `post_title` VARCHAR,
-                `post_content` VARCHAR,
+                `post_id` INT(8) UNSIGNED NOT NULL,
+                `post_title` VARCHAR (255),
                 `created_at` DATETIME,
                 `updated_at` DATETIME,
                 PRIMARY KEY(`id`)
             );
         ";
 
+
+
         // nous devons un require à la main de cette bibliothèque afin de pouvoir utiliser la fonction dbDelta
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         dbDelta($sql);
+
     }
 
     public function dropTable()
@@ -91,9 +91,7 @@ class TribeModel extends CoreModel
             // second argument : les valeur que nous donnons aux différentes colonnes de la table
             [
                 `user_id` => $this->user_id,
-                `creator_id` => $this->creator_id,
                 `post_title` => $this->post_title_id,
-                `post_content` => $this->post_content_id,
                 `created_at` => date('Y-m-d H:i:s')
             ]
         );
@@ -119,9 +117,7 @@ class TribeModel extends CoreModel
             $this->getTableName(),
             [
                 `user_id` => $this->user_id,
-                `creator_id` => $this->creator_id,
                 `post_title` => $this->post_title_id,
-                `post_content` => $this->post_content_id,
                 `updated_at` => date('Y-m-d H:i:s')
             ],
             [
