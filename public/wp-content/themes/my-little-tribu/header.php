@@ -7,5 +7,6 @@ wp_head();
   <meta content="" name="keywords">
   <meta content="" name="description">
   
+  <link rel="stylesheet" href="<?= get_theme_file_uri('assets/js/main.css');?>"/>
 
 </head>
