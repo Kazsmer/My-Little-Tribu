@@ -20,8 +20,8 @@ wp-config.php.bak
 # !wp-content/themes
 #!/wp-content/themes/my-little-tribu
 
-#wp-content/plugins/*
-#!wp-content/plugins/
-#!/wp-content/plugins/my-little-tribu
+wp-content/plugins/*
+!wp-content/plugins/
+!/wp-content/plugins/my-little-tribu
 
 uploads
