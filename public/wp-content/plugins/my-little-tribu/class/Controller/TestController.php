@@ -14,10 +14,10 @@ class TestController extends MainController
     public function model()
     {
         $tribeModel = new TribeModel();
-        $tribeModel->createTable();
-
-        $tribeModel->tribe_id = 17;
-        $tribeModel->photo_id = 13;
+     //   $tribeModel->createTable();
+     //   $tribeModel->user_id = 17;
+     //   $tribeModel->tribe_id = 17;
+      //  $tribeModel->photo_id = 13;
         $tribeModel->insert();
     }
 
@@ -28,3 +28,4 @@ class TestController extends MainController
        //echo $participation->loadById(1)->get('id');
     }     
 }
+
