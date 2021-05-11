@@ -2,6 +2,7 @@
 
 namespace MyLittleTribu;
 
+use MyLittleTribu\Model\GuestTribeModel;
 use MyLittleTribu\Model\TribeModel;
 use MyLittleTribu\Router;
 use WP_Query;
@@ -38,9 +39,12 @@ class Plugin
        $customRole = new CustomRole();
        $customRole->register();
 
-        // création des tables en bdd
-       $tribeModel = new TribeModel();
-       $tribeModel->createTable();
+       // création des tables en bdd
+       // $tribeModel = new TribeModel();
+       // $tribeModel->createTable();
+
+       $guestTribeModel = new GuestTribeModel();
+       $guestTribeModel->createTable();
     }
 
     public static function deactivate()
@@ -49,9 +53,9 @@ class Plugin
         $customRole->unregister();
 
         // suppresion des tables en bdd (attention ceci est à titre pédagogique)
-       $tribeModel = new TribeModel();
-       $tribeModel->dropTable();
-        
+       $guestTribeModel = new GuestTribeModel();
+       $guestTribeModel->dropTable();
+
     }
 
 

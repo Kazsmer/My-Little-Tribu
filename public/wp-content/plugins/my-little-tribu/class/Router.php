@@ -43,6 +43,17 @@ class Router
             'top'
         );
 
+        add_rewrite_rule(
+            'test/listGuestByTribeId?$',
+            'index.php?custom-route=listGuestByTribeId',
+            'top'
+        );
+
+        add_rewrite_rule(
+            'test/getTribeByGuestId?$',
+            'index.php?custom-route=getTribeByGuestId',
+            'top'
+        );
 
         // wordpress enregistre le url en base de donnée. Etant donné que nous déclarons une nouvelle route, de façon "brutale" nous forçons wordpress à rafraichir sont cache d'url
         flush_rewrite_rules();
@@ -68,7 +79,16 @@ class Router
             if ($customRouteParameter === 'create') {
                 $controller = new TestController();
                 $controller->create();
-            } else {
+            }
+            elseif ($customRouteParameter === 'getTribeByGuestId') {
+                $controller = new TestController();
+                $controller->getTribeByGuestId();
+            }
+            elseif ($customRouteParameter === 'listGuestByTribeId') {
+                $controller = new TestController();
+                $controller->listGuestByTribeId();
+            }
+            else {
                 // si nous ne souhaitons pas gérer nous même le template, nous retournons le template que wordpress voulait utiliser à la base
                 return $template;
             }
