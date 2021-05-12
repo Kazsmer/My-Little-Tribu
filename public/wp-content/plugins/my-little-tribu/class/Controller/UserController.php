@@ -87,7 +87,7 @@ class UserController extends MainController
                 'post_title' => $nom,
                 'post_author' => $result,
                 'post_status' => 'publish',
-                'post_type' => $postType
+               // 'post_type' => $postType//
             ];
 
             $postCreationResult = wp_insert_post($options);
@@ -190,6 +190,12 @@ class UserController extends MainController
     {
         $this->show('views/user/create-tribu.tpl.php');
     }
+
+    public function privatePage ()
+    {
+        $this->show('views/user/private-page.tpl.php');
+    }
+
 }
 
 

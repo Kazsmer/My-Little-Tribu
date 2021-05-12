@@ -98,6 +98,12 @@ class Router
             'top'
         );
 
+        add_rewrite_rule(
+            'user/private-page/?$',
+            'index.php?custom-route=user-private-page',
+            'top'
+        );
+
 
        
     
@@ -175,11 +181,13 @@ class Router
                 $controller = new UserController();
                 $controller->update();
             }
-            /*elseif($customRouteParameter === 'test-model') {
-                $controller = new Test();
-                $controller->model();
+            elseif($customRouteParameter === 'user-private-page') {
+
+                $controller = new UserController();
+                $controller->privatePage();
             }
-            elseif($customRouteParameter === 'test-developer-model') {
+
+            /*elseif($customRouteParameter === 'test-developer-model') {
                 $controller = new Test();
                 $controller->developerModel();
             }

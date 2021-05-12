@@ -25,7 +25,7 @@ get_header();
             </div>
               <div class="px-0 mt-5 col-md-12 col-sm-9 col-sm-12 col-12 b-button-right">
                 <button class="col-md-12 col-sm-9 col-sm-12 col-12 readmore">
-                  Je crée ma tribu
+                <a href="<?=get_home_url();?>/user/private-page">Je crée ma tribu</a> 
                 </button>
               </div>
             </div>
