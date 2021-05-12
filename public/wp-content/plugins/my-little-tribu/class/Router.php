@@ -57,6 +57,12 @@ class Router
         );
 
         add_rewrite_rule(
+            'user/create/?$',
+            'index.php?custom-route=user-create',
+            'top'
+        );
+
+        add_rewrite_rule(
             'user/invitation/?$',
             'index.php?custom-route=user-invitation',
             'top'
@@ -114,6 +120,10 @@ class Router
             elseif($customRouteParameter === 'user-register') {
                 $controller = new UserController();
                 $controller->register();
+            }
+            elseif($customRouteParameter === 'user-create') {
+                $controller = new UserController();
+                $controller->create();
             }
 
             elseif($customRouteParameter === 'user-invitation') {
