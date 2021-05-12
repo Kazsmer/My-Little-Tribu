@@ -16,7 +16,9 @@ class PhotoController extends MainController
     public function processUpload()
 
     {
-        $this->show('process_upload.tpl.php');
+        $this->show('process_upload.php');
     }
+
+    
 
 }

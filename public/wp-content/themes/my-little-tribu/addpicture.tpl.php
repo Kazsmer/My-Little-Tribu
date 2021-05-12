@@ -17,84 +17,63 @@ get_header();
               <p class="mb-2">Avec ma super tribu</p>
             </div>
           </div>
-          <div class="col-md-12 col-lg-6 text-left text-lg-right" data-aos="fade-up" data-aos-delay="100">
-            <select class="custom-select select-filter">
-              <option selected="" value="">
-                Evenement
-              </option>
-              <option value="">
-                Design
-              </option>
-              <option value="">
-                Branding
-              </option>
-              <option value="">
-                Photography
-              </option>
-            </select>
-            <select class="custom-select select-filter">
-              <option selected="" value="">
-                Date
-              </option>
-              <option value="">
-                Design
-              </option>
-              <option value="">
-                Branding
-              </option>
-              <option value="">
-                Photography
-              </option>
-            </select>
-            <select class="custom-select select-filter">
-              <option selected="" value="">
-                Personne
-              </option>
-              <option value="">
-                Design
-              </option>
-              <option value="">
-                Branding
-              </option>
-              <option value="">
-                Photography
-              </option>
-            </select>
-          </div>
         </div>
       </div>
 
       <div class="site-section pb-0">
         <div class="container">
           <form class="row" data-aos="fade-up" action="<?=get_home_url();?>/processUpload" method="post" enctype="multipart/form-data">
+            
             <div class="col-lg-6">
+              
               <div class="col-lg-12 px-0 pb-4">
                   <input type="password" class="form-control" id="inputPassword2" placeholder="Titre de la photo">
               </div>
+              
               <div class="flex">              
+                
                 <div class="col-lg-6 pl-1">
-                  <div class="input-group">
-                    <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                      <option selected>Choose...</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-                  </div>
                 </div>
-                <div class="col-lg-6 px-0">
-                  <div class="input-group">
-                    <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                      <option selected>Choose...</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-                  </div>
-                </div>
+                
               </div>
               <div class="col-lg-12 px-0 pt-4">
                 <div class="input-group">
+
+
+                <?php
+
+                  // récupération de la liste des couples guest/tribe envoyé par le controller
+                  $guestTribeAssociations = $args['tribes'];
+
+                  // pour chaque association guest/tribe
+                  foreach($guestTribeAssociations as $guestTribe) {
+
+                    echo '<fieldset>';
+
+                    // récupération du cpt tribe concerné l'association
+                      $tribe = $guestTribe->getTribe();
+
+                      // affichage du nom de la technologie
+                      echo $tribe->name;
+                      
+                      echo '<div>';
+
+                           // l'id de l'association guest/tribe nous sert à générer le name du champ select. ceci nous permettra de savoir quel ligne nous devrons mettre à jour
+                           echo '<select>';
+
+                       
+                           echo '<option value="tribes[' . $guestTribe->id . ']"> </option>';
+                      }
+                        echo '</select>';
+                    echo '<div>';
+                    echo '</fieldset>';
+?>
+
+
+
+
+
+
                   <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
                     <option selected>Choose...</option>
                     <option value="1">One</option>

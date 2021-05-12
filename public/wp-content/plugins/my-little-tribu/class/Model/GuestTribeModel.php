@@ -92,7 +92,18 @@ class GuestTribeModel extends CoreModel
         return $guestTribeResults;
     }
 
+    public function getTribe()
+    {
+        
+        $options = [
+            'post_type' => 'any',
+            'post__in'=> [$this->tribe_id]
+        ];
 
+        $wpQuery = new WP_Query($options);
+        $posts = $wpQuery->posts;
+        return $posts[0];
+    }
 
 
 

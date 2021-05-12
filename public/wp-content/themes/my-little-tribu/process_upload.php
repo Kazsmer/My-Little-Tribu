@@ -4,7 +4,7 @@
 
  
 // WordPress environment
-require( dirname(__FILE__) . '/../../../wp-load.php' );
+require( dirname(__FILE__) . '/../../../wp/wp-load.php' );
  
 $wordpress_upload_dir = wp_upload_dir();
 // $wordpress_upload_dir['path'] is the full server path to wp-content/uploads/2017/05

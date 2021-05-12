@@ -1,6 +1,5 @@
 <?php
 
-/*
 
 namespace MyLittleTribu\Model;
 
@@ -14,7 +13,7 @@ class WPUserModel
         // DOC wp query via id d'auteur https://developer.wordpress.org/reference/classes/wp_query/#author-parameters
 
         $options = [
-            'post_type' => 'photo',
+            'post_type' => 'tribe',
             'post_status' => 'publish',
             'posts_per_page' => 1,
             'author' => $id
@@ -53,4 +52,4 @@ class WPUserModel
     }
 }
 
-*/
+
