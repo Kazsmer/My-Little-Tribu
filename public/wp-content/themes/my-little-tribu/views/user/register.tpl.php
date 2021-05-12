@@ -26,7 +26,7 @@ get_header();
 
       <div class="site-section pb-0">
         <div class="container">
-          <form method="post" action="<?=get_home_url();?>/user/register" class="row" data-aos="fade-up" >
+          <form method="post" action="<?=get_home_url();?>/user/create" class="row" data-aos="fade-up" >
             <div class="col-lg-12">
               <div class="flex px-0 pb-4">              
                 <div class="col-lg-6 pl-0">

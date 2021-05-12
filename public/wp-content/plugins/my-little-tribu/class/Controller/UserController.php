@@ -71,7 +71,6 @@ class UserController extends MainController
         // sinon $result est un objet de type \WP_Error
 
         if(is_int($result)) {
-
             // IMPORTANT récupération d'un utilisateur wordpress par id
             $newUser = new WP_User($result);
             // nous retirons le role "subscriber" du nouvel utilisateur
@@ -89,7 +88,6 @@ class UserController extends MainController
                 'post_status' => 'publish',
                 'post_type' => $postType
             ];
-
             $postCreationResult = wp_insert_post($options);
 
 
@@ -122,6 +120,24 @@ class UserController extends MainController
     public function createTribu()
     {
         $this->show('views/user/create-tribu.tpl.php');
+    }
+
+    public function createTribuName()
+    {
+        $tribu = filter_input(INPUT_POST, 'tribu');
+
+        $user = wp_get_current_user();
+
+        $postarr = wp_insert_post([
+                'post_title' => $tribu,
+                'post_type' => 'tribe',
+                'post_author' => $user->ID,
+                'post_status' => 'publish'
+            ]);
+
+        $postCreationResult = wp_insert_post($postarr);
+
+        $this->redirect('/user/invitation');
     }
 }
 

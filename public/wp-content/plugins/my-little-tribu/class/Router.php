@@ -56,6 +56,7 @@ class Router
             'top'
         );
 
+        // Création d'un user guest
         add_rewrite_rule(
             'user/create/?$',
             'index.php?custom-route=user-create',
@@ -71,6 +72,12 @@ class Router
         add_rewrite_rule(
             'user/create-tribu/?$',
             'index.php?custom-route=user-create-tribu',
+            'top'
+        );
+
+        add_rewrite_rule(
+            'user/create-tribu-name/?$',
+            'index.php?custom-route=user-create-tribu-name',
             'top'
         );
 
@@ -134,6 +141,10 @@ class Router
             elseif($customRouteParameter === 'user-create-tribu') {
                 $controller = new UserController();
                 $controller->createTribu();
+            }
+            elseif($customRouteParameter === 'user-create-tribu-name') {
+                $controller = new UserController();
+                $controller->createTribuName();
             }
             /*elseif($customRouteParameter === 'user-create') {
                 $controller = new User();
