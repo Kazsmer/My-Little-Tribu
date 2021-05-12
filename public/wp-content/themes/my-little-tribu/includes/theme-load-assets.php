@@ -6,8 +6,9 @@ function loadAssets()
 
 wp_enqueue_style(
     'google-font-0',
-    'https://fonts.googleapis.com/css?family=Inconsolata:400,700|Raleway:400,700&display=swap'
+    'https://fonts.googleapis.com/css?family=Inconsolata:400,700|Delius|Pacifico&display=swap'
 );
+/*|Raleway:400,700*/
 
 wp_enqueue_style(
     'bootstrap',

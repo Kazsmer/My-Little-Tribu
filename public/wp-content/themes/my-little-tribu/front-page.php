@@ -14,10 +14,13 @@ get_header();
       <div class="container h-100 d-flex align-items-center">
         <div class="row mb-5 w-100">
           <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
-            <h2>Nous à la plage !</h2>
+            <h2 class="h2-img mb-3">Rejoins ta tribu !</h2>
             <div>
               <p class="mb-2">Ma super tribu</p>
             </div>
+            <button class="col-lg-5 col-md-5 col-sm-5 col-sm-5 col-5 readmore">
+              S'inscrire
+            </button>
           </div>
         </div>
       </div>
