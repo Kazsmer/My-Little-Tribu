@@ -57,6 +57,36 @@ class Router
         );
 
         add_rewrite_rule(
+            'user/create/?$',
+            'index.php?custom-route=user-create',
+            'top'
+        );
+
+        add_rewrite_rule(
+            'user/confirm-delete/?$',
+            'index.php?custom-route=user-confirm-delete',
+            'top'
+        );
+
+        add_rewrite_rule(
+            'user/delete/?$',
+            'index.php?custom-route=user-delete',
+            'top'
+        );
+
+        add_rewrite_rule(
+            'user/edit/?$',
+            'index.php?custom-route=user-edit',
+            'top'
+        );
+
+        add_rewrite_rule(
+            'user/update/?$',
+            'index.php?custom-route=user-update',
+            'top'
+        );
+
+        add_rewrite_rule(
             'user/invitation/?$',
             'index.php?custom-route=user-invitation',
             'top'
@@ -125,27 +155,27 @@ class Router
                 $controller = new UserController();
                 $controller->createTribu();
             }
-            /*elseif($customRouteParameter === 'user-create') {
-                $controller = new User();
+            elseif($customRouteParameter === 'user-create') {
+                $controller = new UserController();
                 $controller->create();
             }
             elseif($customRouteParameter === 'user-confirm-delete') {
-                $controller = new User();
+                $controller = new UserController();
                 $controller->confirmDelete();
             }
             elseif($customRouteParameter === 'user-delete') {
-                $controller = new User();
+                $controller = new UserController();
                 $controller->delete();
             }
             elseif($customRouteParameter === 'user-edit') {
-                $controller = new User();
+                $controller = new UserController();
                 $controller->edit();
             }
             elseif($customRouteParameter === 'user-update') {
-                $controller = new User();
+                $controller = new UserController();
                 $controller->update();
             }
-            elseif($customRouteParameter === 'test-model') {
+            /*elseif($customRouteParameter === 'test-model') {
                 $controller = new Test();
                 $controller->model();
             }
