@@ -12,9 +12,9 @@ get_header();
       <div class="container">
         <div class="row mb-5 align-items-center">
           <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
-            <h2>Nous à la plage !</h2>
+            <h2>Partager une photo</h2>
             <div>
-              <p class="mb-2">Ma super tribu</p>
+              <p class="mb-2">Avec ma super tribu</p>
             </div>
           </div>
           <div class="col-md-12 col-lg-6 text-left text-lg-right" data-aos="fade-up" data-aos-delay="100">
@@ -66,7 +66,7 @@ get_header();
 
       <div class="site-section pb-0">
         <div class="container">
-          <form class="row" data-aos="fade-up">
+          <form class="row" data-aos="fade-up" action="<?=get_home_url();?>/processUpload" method="post" enctype="multipart/form-data">
             <div class="col-lg-6">
               <div class="col-lg-12 px-0 pb-4">
                   <input type="password" class="form-control" id="inputPassword2" placeholder="Titre de la photo">
@@ -106,6 +106,7 @@ get_header();
               <div class="col-auto px-0 pt-4">
               </div>
             </div>
+
               <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="input-group">
                     <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" style="height: 20vh;">
@@ -116,7 +117,9 @@ get_header();
                   </button>
                 </div>
               </div>
-            </form>
+
+
+           </form>
         </div>
       </div>
   </main>

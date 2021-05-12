@@ -4,6 +4,7 @@ namespace MyLittleTribu;
 
 use MyLittleTribu\Controller\UserController;
 use MyLittleTribu\Controller\TestController;
+use MyLittleTribu\Controller\PhotoController;
 
 // Cette classe va nous permettre de dire à wordpress que certaine url seront gérées par le plugin
 class Router
@@ -55,6 +56,21 @@ class Router
             'top'
         );
 
+        add_rewrite_rule(
+            'uploadPhoto/?$',
+            'index.php?custom-route=upload-photo',
+            'top'
+        );
+
+        add_rewrite_rule(
+            'processUpload/?$',
+            'index.php?custom-route=process_upload',
+            'top'
+        );
+
+
+
+
         // wordpress enregistre le url en base de donnée. Etant donné que nous déclarons une nouvelle route, de façon "brutale" nous forçons wordpress à rafraichir sont cache d'url
         flush_rewrite_rules();
 
@@ -88,6 +104,17 @@ class Router
                 $controller = new TestController();
                 $controller->listGuestByTribeId();
             }
+
+            elseif ($customRouteParameter === 'upload-photo') {
+                $controller = new PhotoController();
+                $controller->uploadPhoto();
+            }
+
+            elseif ($customRouteParameter === 'process_upload') {
+                $controller = new PhotoController();
+                $controller->processUpload();
+            }
+
             else {
                 // si nous ne souhaitons pas gérer nous même le template, nous retournons le template que wordpress voulait utiliser à la base
                 return $template;
