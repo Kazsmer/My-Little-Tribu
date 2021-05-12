@@ -10,7 +10,8 @@
 --------------------------------------------------------------*/
 
 body {
-  font-family: "Inconsolata", monosapce;
+  /*font-family: "Inconsolata", monosapce;*/
+  font-family: 'Delius', cursive;
   color: #0d1e2d;
 }
 
@@ -29,7 +30,12 @@ h4,
 h5,
 h6,
 .font-heading {
-  font-family: "Raleway", sans-serif;
+  /*font-family: "Raleway", sans-serif;*/
+  font-family: 'Pacifico', cursive;
+}
+.h2-img{
+  font-family: 'Pacifico', cursive;
+  font-size: 50pt;
 }
 .center{
 display: flex;
