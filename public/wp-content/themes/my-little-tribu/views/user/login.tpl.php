@@ -37,7 +37,7 @@ get_header();
           </div>
               <div class="px-0 mt-2 col-md-12 col-sm-9 col-sm-12 col-12 b-button-right">
                 <button class="col-md-12 col-sm-9 col-sm-12 col-12 readmore">
-                  Créer mon compte
+                  Connexion
                 </button>
               </div>
               <div class="col-auto px-0 pt-4">

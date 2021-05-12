@@ -6,8 +6,8 @@ class MainController
 {
     public function __construct()
     {
-
-
+       
+        
     }
 
     public function authentificateUser($userId)
