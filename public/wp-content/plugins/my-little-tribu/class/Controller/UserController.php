@@ -3,6 +3,7 @@
 namespace MyLittleTribu\Controller;
 
 use WP_User;
+use WP_Query;
 
 require_once(ABSPATH.'wp-admin/includes/user.php');
 
@@ -74,6 +75,7 @@ class UserController extends MainController
             // IMPORTANT récupération d'un utilisateur wordpress par id
             $newUser = new WP_User($result);
             // nous retirons le role "subscriber" du nouvel utilisateur
+            $newUser->remove_role('subscriber');
             $newUser->add_role('guest');
             $postType = 'guest';
 
@@ -116,6 +118,30 @@ class UserController extends MainController
     {
         $this->show('views/user/invitation.tpl.php');
     }
+    public function addInvitation()
+    {
+        $loginName = filter_input(INPUT_POST, 'prenom');
+        // Recuperer le user courant
+        $user = wp_get_current_user();
+        $userId = $user->ID;
+        // Recuperer la tribu du user courant
+        $args = array(
+            'post_type' => 'tribe',
+            'author' => $userId
+        );
+        $query = new WP_Query( $args );
+
+        $blogusers = get_users( array( 'role__in' => array( 'author', 'guest' ) ) );
+
+        //var_dump($query); die;
+        var_dump($blogusers); die;
+
+        // Template -> liste des guest
+        // Clique sur le bouton
+        // function -> recupere la valeur de l'input -> l'id du guest ->
+        //- Faire une requette dans la table wp-guest_tribe,
+        //  (insertion ou update) d'un invité dans la table
+    }
 
     public function createTribu()
     {
@@ -134,8 +160,13 @@ class UserController extends MainController
                 'post_author' => $user->ID,
                 'post_status' => 'publish'
             ]);
-
+        // Insertion d'un POST
         $postCreationResult = wp_insert_post($postarr);
+
+        // Apres la creation d'un POST le guest devient creator
+        $newUser = new WP_User($user->ID);
+        $newUser->remove_role('guest');
+        $newUser->add_role('creator'); 
 
         $this->redirect('/user/invitation');
     }

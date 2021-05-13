@@ -70,6 +70,12 @@ class Router
         );
 
         add_rewrite_rule(
+            'user/addInvitation/?$',
+            'index.php?custom-route=user-add-invitation',
+            'top'
+        );
+
+        add_rewrite_rule(
             'user/create-tribu/?$',
             'index.php?custom-route=user-create-tribu',
             'top'
@@ -136,6 +142,11 @@ class Router
             elseif($customRouteParameter === 'user-invitation') {
                 $controller = new UserController();
                 $controller->invitation();
+            }
+
+            elseif($customRouteParameter === 'user-add-invitation') {
+                $controller = new UserController();
+                $controller->addInvitation();
             }
 
             elseif($customRouteParameter === 'user-create-tribu') {
