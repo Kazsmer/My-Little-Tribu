@@ -69,7 +69,13 @@ class UserController extends MainController
         $password = filter_input(INPUT_POST, 'password');
 
         // DOC wp create user : https://developer.wordpress.org/reference/functions/wp_create_user/
-        $result = wp_create_user($prenom, $nom, $email, $password);
+        // $result = wp_create_user($prenom, $nom, $email, $password);
+
+        $result = wp_create_user(
+            $prenom.  ' ' . $nom,
+            $password,
+            $email
+        );
 
         // si la création d'un utilisateur a fonctionné, $result vaut l'id du nouvel utilisateur
         // sinon $result est un objet de type \WP_Error

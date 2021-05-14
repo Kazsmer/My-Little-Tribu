@@ -213,6 +213,7 @@ class GuestTribeModel extends CoreModel
                 'created_at' => date('Y-m-d H:i:s')
             ]
         );
-
+        wp_redirect(get_home_url() . '/user/private-page' );
+        exit;
     }
 }
