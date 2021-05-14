@@ -31,7 +31,7 @@
         <a href="index.html"><span>My little tribu</span></a>
       </div>-->
       <div>
-        <a href="#">Se connecter</a>
+        <a href="<?=get_home_url();?>/user/login">Se connecter</a>
       </div>
     </div>
   </nav>
