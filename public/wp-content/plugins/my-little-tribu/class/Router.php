@@ -194,6 +194,11 @@ class Router
                 $controller = new UserController();
                 $controller->createTribuName();
             }
+
+            elseif($customRouteParameter === 'user-private-page') {
+                $controller = new UserController();
+                $controller->privatePage();
+            }
             /*elseif($customRouteParameter === 'user-create') {
                 $controller = new User();
                 $controller->create();
