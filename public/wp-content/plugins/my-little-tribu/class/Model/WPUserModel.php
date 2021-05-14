@@ -1,6 +1,6 @@
 <?php
 
-/*
+
 
 namespace MyLittleTribu\Model;
 
@@ -53,4 +53,3 @@ class WPUserModel
     }
 }
 
-*/

@@ -20,20 +20,20 @@ class UserController extends MainController
     public function checkLogin()
     {
       // récupération du login saisi
-      $login = filter_input(INPUT_POST, 'login');
+      $email = filter_input(INPUT_POST, 'email');
       $password = filter_input(INPUT_POST, 'password');
 
       // vérification des données saisies
       // DOC check user login : https://developer.wordpress.org/reference/functions/wp_authenticate/
 
-      $result = wp_authenticate($login, $password);
+      $result = wp_authenticate($email, $password);
 
       if($result instanceof \WP_User) {
           // si $result est un objet (une instance) de type \WP_User, l'utilisateur s'est bien connecté
           $this->authentificateUser($result->ID);
 
           // nous redirigeons l'utilisateur vers sa home personnelle
-          $this->redirect('/user/home');
+          $this->redirect('/user/private-page');
 
       }
       else {
@@ -52,10 +52,13 @@ class UserController extends MainController
         $this->show('views/user/home.tpl.php');
     }
 
+
     public function register()
     {
         $this->show('views/user/register.tpl.php');
     }
+
+   
 
     public function create()
     {
@@ -96,6 +99,7 @@ class UserController extends MainController
             $this->authentificateUser($result);
             $this->redirect('/user/create-tribu');
         }
+
         else {
             $messages = [];
             if(array_key_exists('existing_user_login', $result->errors)) {
@@ -114,33 +118,75 @@ class UserController extends MainController
         // get_defined_vars()
     }
 
+    public function confirmDelete()
+    {
+        $this->show('views/user/confirm-delete.tpl.php');
+    }
+
+    public function delete()
+    {
+        // DOC récupérer utilisateur courant https://developer.wordpress.org/reference/functions/wp_get_current_user/
+        $user = wp_get_current_user();
+
+        // DOC suppression d'un utilisateur https://developer.wordpress.org/reference/functions/wp_delete_user/
+        wp_delete_user($user->ID);
+        $this->redirect('/');
+    }
+
+    public function edit()
+    {
+
+        $currentUser = wp_get_current_user();
+        $address = get_user_meta(
+            $currentUser->ID,
+            'address',
+            true
+        );
+
+
+        $email = $currentUser->data->user_email;
+
+        $this->show('views/user/edit.tpl.php', [
+            'email' => $email,
+            'address' => $address
+        ]);
+    }
+    
+    public function update()
+    {
+
+        // récupération des données envoyées depuis le formulaire
+        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+
+        $address = filter_input(INPUT_POST, 'address');
+
+        $currentUser = wp_get_current_user();
+
+        if($email) {
+            // IMPORTANT construction du tableau que wordpress va utiliser pour mettre à jour un user
+            $updateData = [
+                'ID' => $currentUser->ID,
+                'user_email' => $email
+            ];
+            // DOC update user https://developer.wordpress.org/reference/functions/wp_update_user/
+            wp_update_user($updateData);
+        }
+
+        if($address) {
+            update_user_meta(
+                $currentUser->ID,
+                'address',
+                $address
+            );
+        }
+
+        $this->show('views/user/update-success.tpl.php');
+    }
+
+
     public function invitation()
     {
         $this->show('views/user/invitation.tpl.php');
-    }
-    public function addInvitation()
-    {
-        $loginName = filter_input(INPUT_POST, 'prenom');
-        // Recuperer le user courant
-        $user = wp_get_current_user();
-        $userId = $user->ID;
-        // Recuperer la tribu du user courant
-        $args = array(
-            'post_type' => 'tribe',
-            'author' => $userId
-        );
-        $query = new WP_Query( $args );
-
-        $blogusers = get_users( array( 'role__in' => array( 'author', 'guest' ) ) );
-
-        //var_dump($query); die;
-        var_dump($blogusers); die;
-
-        // Template -> liste des guest
-        // Clique sur le bouton
-        // function -> recupere la valeur de l'input -> l'id du guest ->
-        //- Faire une requette dans la table wp-guest_tribe,
-        //  (insertion ou update) d'un invité dans la table
     }
 
     public function createTribu()
@@ -170,6 +216,11 @@ class UserController extends MainController
 
         $this->redirect('/user/invitation');
     }
+    public function privatePage ()
+    {
+        $this->show('views/user/private-page.tpl.php');
+    }
+
 }
 
 

@@ -4,6 +4,7 @@ namespace MyLittleTribu;
 
 use MyLittleTribu\Controller\UserController;
 use MyLittleTribu\Controller\TestController;
+use MyLittleTribu\Model\GuestTribeModel;
 
 // Cette classe va nous permettre de dire à wordpress que certaine url seront gérées par le plugin
 class Router
@@ -64,6 +65,36 @@ class Router
         );
 
         add_rewrite_rule(
+            'user/create/?$',
+            'index.php?custom-route=user-create',
+            'top'
+        );
+
+        add_rewrite_rule(
+            'user/confirm-delete/?$',
+            'index.php?custom-route=user-confirm-delete',
+            'top'
+        );
+
+        add_rewrite_rule(
+            'user/delete/?$',
+            'index.php?custom-route=user-delete',
+            'top'
+        );
+
+        add_rewrite_rule(
+            'user/edit/?$',
+            'index.php?custom-route=user-edit',
+            'top'
+        );
+
+        add_rewrite_rule(
+            'user/update/?$',
+            'index.php?custom-route=user-update',
+            'top'
+        );
+
+        add_rewrite_rule(
             'user/invitation/?$',
             'index.php?custom-route=user-invitation',
             'top'
@@ -84,6 +115,12 @@ class Router
         add_rewrite_rule(
             'user/create-tribu-name/?$',
             'index.php?custom-route=user-create-tribu-name',
+            'top'
+        );
+
+        add_rewrite_rule(
+            'user/private-page/?$',
+            'index.php?custom-route=user-private-page',
             'top'
         );
 
@@ -145,7 +182,7 @@ class Router
             }
 
             elseif($customRouteParameter === 'user-add-invitation') {
-                $controller = new UserController();
+                $controller = new GuestTribeModel();
                 $controller->addInvitation();
             }
 
@@ -162,26 +199,28 @@ class Router
                 $controller->create();
             }
             elseif($customRouteParameter === 'user-confirm-delete') {
-                $controller = new User();
+                $controller = new UserController();
                 $controller->confirmDelete();
             }
             elseif($customRouteParameter === 'user-delete') {
-                $controller = new User();
+                $controller = new UserController();
                 $controller->delete();
             }
             elseif($customRouteParameter === 'user-edit') {
-                $controller = new User();
+                $controller = new UserController();
                 $controller->edit();
             }
             elseif($customRouteParameter === 'user-update') {
-                $controller = new User();
+                $controller = new UserController();
                 $controller->update();
             }
-            elseif($customRouteParameter === 'test-model') {
-                $controller = new Test();
-                $controller->model();
+            elseif($customRouteParameter === 'user-private-page') {
+
+                $controller = new UserController();
+                $controller->privatePage();
             }
-            elseif($customRouteParameter === 'test-developer-model') {
+
+            /*elseif($customRouteParameter === 'test-developer-model') {
                 $controller = new Test();
                 $controller->developerModel();
             }

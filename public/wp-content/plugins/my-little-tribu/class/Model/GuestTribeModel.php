@@ -183,4 +183,36 @@ class GuestTribeModel extends CoreModel
         );
         return $this;
     }
+    public function addInvitation()
+    {
+        $guestID = filter_input(INPUT_POST, 'invitation');
+        // Recuperer le user courant
+        $user = wp_get_current_user();
+        $creatorId = $user->ID;
+        // Recuperer la tribu du user courant
+        $args = array(
+            'post_type' => 'tribe',
+            'author' => $creatorId
+        );
+        $query = new WP_Query( $args );
+
+        $tribeID = $query->posts[0]->ID;
+
+        // $guestID = l'invité -> guest_id
+        // $tribeID = la tribu -> tribe_id
+
+         // IMPORTANT insertion de donnée en bdd
+         $this->database->insert(
+            // premier argument : la table dans laquelle nous souhaitons insérer des données
+            $this->getTableName(),
+
+            // second argument : les valeur que nous donnons aux différentes colonnes de la table
+            [
+                'guest_id' => $guestID,
+                'tribe_id' => $tribeID,
+                'created_at' => date('Y-m-d H:i:s')
+            ]
+        );
+
+    }
 }
