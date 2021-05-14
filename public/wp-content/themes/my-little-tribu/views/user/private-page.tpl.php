@@ -2,6 +2,7 @@
 <html lang="en">
 
 <?php 
+use OProfile\Model\GuestTribeModel;
 get_header();
 ?>
 
@@ -78,6 +79,10 @@ get_header();
             <a href="work-single.html" class="item-wrap fancybox">
             
             <?php
+            // - Recuperer le user courant (guest, creator)
+            // - "guest" -> chercher l'association guest / tribu (wp-guest-tribe)
+            // - Si "creator" -> tribu CPT -> chercher l'association tribu / guest
+
                 if(have_posts()) {
                     while(have_posts()) {
                         the_post();
