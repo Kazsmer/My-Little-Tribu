@@ -2,6 +2,8 @@
 <html lang="en">
 
 <?php 
+use MyLittleTribu\Model\GuestTribeModel;
+
 get_header();
 ?>
 
@@ -41,45 +43,28 @@ get_header();
 
 
                 <?php
+                  $user = wp_get_current_user();
+                  // $user = $user->ID;
+                  //var_dump($user);die;
 
-                  // récupération de la liste des couples guest/tribe envoyé par le controller
-                  $guestTribeAssociations = $args['tribes'];
+                  $guestTribeModel = new GuestTribeModel();
+                  $tribeParticipations = $guestTribeModel->getTribeByGuestId($user->ID);
 
                   // pour chaque association guest/tribe
-                  foreach($guestTribeAssociations as $guestTribe) {
-
-                    echo '<fieldset>';
-
-                    // récupération du cpt tribe concerné l'association
-                      $tribe = $guestTribe->getTribe();
-
-                      // affichage du nom de la technologie
-                      echo $tribe->name;
-                      
-                      echo '<div>';
-
-                           // l'id de l'association guest/tribe nous sert à générer le name du champ select. ceci nous permettra de savoir quel ligne nous devrons mettre à jour
-                           echo '<select>';
-
-                       
-                           echo '<option value="tribes[' . $guestTribe->id . ']"> </option>';
+                  echo '<fieldset>';
+                   echo '<div>';
+                     echo '<select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">';
+                      echo '<option selected> Choisis ta Tribu </option>';
+                      foreach ($tribeParticipations as $participation) {
+                        $tribe = $participation->getTribe();
+                        echo '<option value="'. $tribe->ID . '">' . $tribe->post_title . '</option>';
                       }
-                        echo '</select>';
-                    echo '<div>';
-                    echo '</fieldset>';
-?>
+                     echo '</select>';
+                   echo '<div>';
+                  echo '</fieldset>';
 
+                  ?>
 
-
-
-
-
-                  <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
                 </div>
               </div>
               <div class="col-auto px-0 pt-4">
@@ -88,7 +73,7 @@ get_header();
 
               <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="input-group">
-                    <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" style="height: 20vh;">
+                    <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" style="height: 20vh;" name="photo">
                 </div>
                 <div class="px-0 mt-5 col-md-12 col-sm-9 col-sm-12 col-12 b-button-right">
                   <button class="col-md-12 col-sm-9 col-sm-12 col-12 readmore">

@@ -2,7 +2,7 @@
 
 // DOC https://rudrastyh.com/wordpress/how-to-add-images-to-media-library-from-uploaded-files-programmatically.html
 
- 
+
 // WordPress environment
 require( dirname(__FILE__) . '/../../../wp/wp-load.php' );
  
@@ -10,8 +10,11 @@ $wordpress_upload_dir = wp_upload_dir();
 // $wordpress_upload_dir['path'] is the full server path to wp-content/uploads/2017/05
 // $wordpress_upload_dir['url'] the absolute URL to the same folder, actually we do not need it, just to show the link to file
 $i = 1; // number of tries when the file with the same name is already exists
- 
+
+
 $photo = $_FILES['photo'];
+
+
 $new_file_path = $wordpress_upload_dir['path'] . '/' . $photo['name'];
 $new_file_mime = mime_content_type( $photo['tmp_name'] );
  
@@ -39,7 +42,7 @@ if( move_uploaded_file( $photo['tmp_name'], $new_file_path ) ) {
 	$upload_id = wp_insert_attachment( array(
 		'guid'           => $new_file_path, 
 		'post_mime_type' => $new_file_mime,
-		'post_title'     => preg_replace( '/\.[^.]+$/', '', $profilepicture['name'] ),
+		'post_title'     => preg_replace( '/\.[^.]+$/', '', $photo['name'] ),
 		'post_content'   => '',
 		'post_status'    => 'inherit'
 	), $new_file_path );

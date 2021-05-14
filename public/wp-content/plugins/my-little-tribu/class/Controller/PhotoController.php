@@ -10,7 +10,7 @@ class PhotoController extends MainController
 {
     public function uploadPhoto()
     {
-        $this->show('addpicture.tpl.php');
+        $this->show('views/addpicture.tpl.php');
     }
 
     public function processUpload()
@@ -19,6 +19,6 @@ class PhotoController extends MainController
         $this->show('process_upload.php');
     }
 
-    
+
 
 }

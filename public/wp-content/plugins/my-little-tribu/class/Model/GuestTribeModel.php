@@ -60,7 +60,6 @@ class GuestTribeModel extends CoreModel
         return $tribeGuestResults;
     }
 
-
     public function getGuestByTribeId($tribeId)
     {
         $sql = "
@@ -94,7 +93,10 @@ class GuestTribeModel extends CoreModel
 
     public function getTribe()
     {
-        
+
+        // solution plus simple
+        // return get_post($this->tribe_id);
+
         $options = [
             'post_type' => 'any',
             'post__in'=> [$this->tribe_id]
