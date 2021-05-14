@@ -98,7 +98,7 @@ get_header();
           </div>
 
 
-         <!--<div class="item photography col-sm-6 col-md-4 col-lg-4 mb-4">
+         <div class="item photography col-sm-6 col-md-4 col-lg-4 mb-4">
             <a href="work-single.html" class="item-wrap fancybox">
               <img class="img-fluid" src="<?= get_theme_file_uri('assets/img/img_1.jpg');?>">
             </a>
@@ -138,7 +138,6 @@ get_header();
               <img class="img-fluid" src="<?= get_theme_file_uri('assets/img/img_1.jpg');?>">
             </a>
           </div>
-          -->
         </div>
       </div>
     </div>
