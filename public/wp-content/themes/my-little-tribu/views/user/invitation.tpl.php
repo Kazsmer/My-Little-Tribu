@@ -19,12 +19,26 @@ get_header();
               <div class="col-lg-12 px-0 pb-4">
                 <div class="input-group">
                 <?php
-                    $blogusers = get_users( array( 'role__in' => array( 'author', 'guest' ) ) );
+                // recupere guest 
+
+                // recupere le user courant OK
+                // recupere les users incrit sur le site (guest & creator)
+                // attention si courant user = un utilisateur inscrit "css-hidden"
+
+                $user = wp_get_current_user();
+                $userID = $user->ID;
+                
+                    $blogusers = get_users( array( 'role__in' => [] ) );
 
                     echo '<select name="invitation" class="custom-select" id="exampleFormControlSelect1"">';
                     echo '<option selected >Invite une personne dans ta tribu</option>';
                       foreach ( $blogusers as $user ) {
-                        echo '<option value="' . $user->ID .'">' . esc_html( $user->user_login ) . '</option>';
+                        if($user->ID === $userID){
+                          //unset($blogusers[$userID]);
+                          echo '<option value="" style="display:none"></option>';
+                        }else{
+                          echo '<option value="' . $user->ID .'">' . esc_html( $user->user_login ) . '</option>';
+                        }
                       }
                     echo '</select>';
                 ?>

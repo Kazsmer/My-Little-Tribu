@@ -37,6 +37,10 @@ h6,
   font-family: 'Pacifico', cursive;
   font-size: 50pt;
 }
+.img-zoom{
+  transform: translate(-15%, 0)!important; 
+  max-width:150%;
+}
 .center{
 display: flex;
 justify-content: center;
