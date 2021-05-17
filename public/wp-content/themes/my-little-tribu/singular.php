@@ -64,20 +64,22 @@ get_header();
           // Toutes les photos
           foreach ($photoL as $all) {
                     // Les Taxonomies de tous les posts
-                      $terms = get_terms( array(
-                        'post_type' => 'photo',
-                        'p' => $all->ID,
-                        'taxonomy' => array ('person', 'event'),
-                        'hide_empty' => false,
-                      ) );
+                      $tax0 = 'event';
+                      $tax1 = 'person';
+                      $terms0 = get_the_terms( $all->ID, $tax0 );
+                      $terms1 = get_the_terms( $all->ID, $tax1 );
               echo '<div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">';
               echo '<a href="work-single.html" class="item-wrap fancybox">';
               //echo '<h1  class="mb-3">' . $all->post_title . '</h1>';
               echo '<div style="display: flex;" class="mb-3">';
-              foreach ($terms as $terms) {
+              foreach ($terms0 as $terms) {
                   echo '<span class="badge badge-info mr-1">'. $terms->slug .'</span>';
               }
+              foreach ($terms1 as $terms) {
+                echo '<span class="badge badge-info mr-1">'. $terms->slug .'</span>';
+              }
               echo '</div>';
+              //$categoriesList = get_the_category($all->ID);
               echo '<div style="width:350px; height:350px; overflow: hidden;">';
                 echo '<img class="img-zoom" src="' . get_the_post_thumbnail_url($all->ID, 'large') . '">';
                 //echo '<div style="background-size: cover; background: url(' . get_the_post_thumbnail_url($all->ID, 'medium') . '); width:350px; height:350px;"></div>';
@@ -143,20 +145,29 @@ get_header();
       echo '<div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">';
       // Toutes les photos
       foreach ($photoL as $all) {
-                // Les Taxonomies de tous les posts
-                  $terms = get_terms( array(
-                    'post_type' => 'photo',
-                    'p' => $all->ID,
-                    'taxonomy' => array ('person', 'event'),
-                    'hide_empty' => false,
-                  ) );
+                    // Les Taxonomies de tous les posts
+                    $tax0 = 'event';
+                    $tax1 = 'person';
+                    $terms0 = get_the_terms( $all->ID, $tax0 );
+                    $terms1 = get_the_terms( $all->ID, $tax1 );
 
           echo '<div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">';
           echo '<a href="work-single.html" class="item-wrap fancybox">';
           echo '<h1  class="mb-3">' . $all->post_title . '</h1>';
           echo '<div style="display: flex;" class="mb-3">';
-          foreach ($terms as $terms) {
+          if(empty($terms0)){
+            echo '<span class="badge badge-info mr-1"></span>';
+          }else{
+            foreach ($terms0 as $terms) {
               echo '<span class="badge badge-info mr-1">'. $terms->slug .'</span>';
+            }
+          }
+          if(empty($terms1)){
+            echo '<span class="badge badge-info mr-1"></span>';
+          }else{
+              foreach ($terms1 as $terms) {
+                  echo '<span class="badge badge-info mr-1">'. $terms->slug .'</span>';
+              }
           }
           echo '</div>';
           echo '<img class="img-zoom" src="' . get_the_post_thumbnail_url($all->ID, 'large') . '">';
