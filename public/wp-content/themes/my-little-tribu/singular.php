@@ -68,15 +68,32 @@ get_header();
                       $tax1 = 'person';
                       $terms0 = get_the_terms( $all->ID, $tax0 );
                       $terms1 = get_the_terms( $all->ID, $tax1 );
+                      $i=0;
               echo '<div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">';
               echo '<a href="work-single.html" class="item-wrap fancybox">';
               //echo '<h1  class="mb-3">' . $all->post_title . '</h1>';
               echo '<div style="display: flex;" class="mb-3">';
-              foreach ($terms0 as $terms) {
-                  echo '<span class="badge badge-info mr-1">'. $terms->slug .'</span>';
+              if(empty($terms0)){
+                echo '<span class="badge badge-info mr-1"></span>';
+              }else{
+                foreach ($terms0 as $terms) {
+                  $i++;
+                  echo '<span class="badge badge-pill badge-info mr-1">'. $terms->slug .'</span>';
+                  if($i == '2'){
+                    break;
+                  }
+                }
               }
-              foreach ($terms1 as $terms) {
-                echo '<span class="badge badge-info mr-1">'. $terms->slug .'</span>';
+              if(empty($terms1)){
+                echo '<span class="badge badge-info mr-1"></span>';
+              }else{
+                  foreach ($terms1 as $terms) {
+                    $i++;
+                      echo '<span class="badge badge-pill badge-warning mr-1">'. $terms->slug .'</span>';
+                      if($i == '2'){
+                        break;
+                      }
+                  }
               }
               echo '</div>';
               //$categoriesList = get_the_category($all->ID);
@@ -181,38 +198,6 @@ get_header();
 
     }
   ?>
-
-    <!--<div class="site-section site-portfolio">
-      <div class="container">
-        <div class="row mb-5 align-items-center">
-          <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
-            <h2><?= $currentUsersName ?></h2>
-            <div>
-              <p class="mb-2"><?= $tribeTitle ?></p>
-            </div>
-          </div>
-          <div class="col-md-12 col-lg-6 text-left text-lg-right" data-aos="fade-up" data-aos-delay="100">
-          </div>
-          <div class="col-md-6 mt-4" data-aos="fade-up" data-aos-delay="100">
-            <button class="readmore d-block w-50">
-              Ajouter une image
-            </button>
-
-            <a href="#" style="color: rgb(255, 87, 87); font-size: 9pt;">Supprimer ma tribu</a>
-          </div>
-        </div>
-        <div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">
-          <div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
-            <a href="work-single.html" class="item-wrap fancybox">
-              <h1>Blabla</h1>
-              <img class="img-fluid" src="<?= get_theme_file_uri('assets/img/img_1.jpg');?>">
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>-->
-
-
 
 </main>
 
