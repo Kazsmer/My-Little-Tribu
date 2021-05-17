@@ -3,7 +3,6 @@
 namespace MyLittleTribu\Controller;
 
 use MyLittleTribu\Model\CoreModel;
-use MyLittleTribu\Model\GuestTribeProject;
 use MyLittleTribu\Model\WPUserModel;
 
 class PhotoController extends MainController

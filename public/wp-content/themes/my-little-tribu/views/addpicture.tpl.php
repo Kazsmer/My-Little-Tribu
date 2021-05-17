@@ -29,7 +29,7 @@ get_header();
             <div class="col-lg-6">
               
               <div class="col-lg-12 px-0 pb-4">
-                  <input type="password" class="form-control" id="inputPassword2" placeholder="Titre de la photo">
+                  <input type="text" class="form-control" id="photoTitle" placeholder="Titre de la photo">
               </div>
               
               <div class="flex">              
