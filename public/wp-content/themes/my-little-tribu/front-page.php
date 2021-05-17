@@ -8,7 +8,7 @@ get_header();
 
 
 <body>
-  <?php get_template_part('partials/header.tpl'); ?>
+  <?php get_template_part('partials/header-front-page.tpl'); ?>
   <main id="main">
     <div class="hero-banner" style="background-image: url('<?= get_theme_file_uri('assets/img/hero-banner.jpg'); ?>');background-repeat: no-repeat;background-size: cover;color:#fff;">
       <div class="container h-100 d-flex align-items-center">
