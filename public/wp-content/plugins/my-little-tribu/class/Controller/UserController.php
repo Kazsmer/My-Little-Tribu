@@ -224,7 +224,7 @@ class UserController extends MainController
     }
     public function privatePage ()
     {
-        $this->show('views/user/private-page.tpl.php');
+        $this->show('singular.php');
     }
 
 }
