@@ -298,7 +298,7 @@ class Plugin
                 'label' => 'Personnage',
                 'public' => true,
                 'show_in_rest' => true,
-                'hierarchical' => false,
+                'hierarchical' => true,
             ]
         );
     }

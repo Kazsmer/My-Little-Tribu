@@ -5,6 +5,7 @@ namespace MyLittleTribu;
 use MyLittleTribu\Controller\UserController;
 use MyLittleTribu\Controller\TestController;
 use MyLittleTribu\Model\GuestTribeModel;
+use MyLittleTribu\Controller\PhotoController;
 
 // Cette classe va nous permettre de dire à wordpress que certaine url seront gérées par le plugin
 class Router
@@ -105,6 +106,13 @@ class Router
             'index.php?custom-route=user-add-invitation',
             'top'
         );
+        
+        add_rewrite_rule(
+            'uploadPhoto/?$',
+            'index.php?custom-route=upload-photo',
+            'top'
+        );
+
 
         add_rewrite_rule(
             'user/create-tribu/?$',
@@ -123,11 +131,13 @@ class Router
             'index.php?custom-route=user-private-page',
             'top'
         );
-
-
        
-    
-        
+
+        add_rewrite_rule(
+            'processUpload/?$',
+            'index.php?custom-route=process_upload',
+            'top'
+        );
 
 
 
@@ -199,65 +209,16 @@ class Router
                 $controller = new UserController();
                 $controller->privatePage();
             }
-            /*elseif($customRouteParameter === 'user-create') {
-                $controller = new User();
-                $controller->create();
-            }
-            elseif($customRouteParameter === 'user-confirm-delete') {
-                $controller = new UserController();
-                $controller->confirmDelete();
-            }
-            elseif($customRouteParameter === 'user-delete') {
-                $controller = new UserController();
-                $controller->delete();
-            }
-            elseif($customRouteParameter === 'user-edit') {
-                $controller = new UserController();
-                $controller->edit();
-            }
-            elseif($customRouteParameter === 'user-update') {
-                $controller = new UserController();
-                $controller->update();
-            }
-            elseif($customRouteParameter === 'user-private-page') {
 
-                $controller = new UserController();
-                $controller->privatePage();
+            elseif ($customRouteParameter === 'upload-photo') {
+                $controller = new PhotoController();
+                $controller->uploadPhoto();
             }
 
-            /*elseif($customRouteParameter === 'test-developer-model') {
-                $controller = new Test();
-                $controller->developerModel();
+            elseif ($customRouteParameter === 'process_upload') {
+                $controller = new PhotoController();
+                $controller->processUpload();
             }
-            elseif($customRouteParameter === 'test-developer-participation-loadbyid') {
-                $controller = new Test();
-                $controller->developerProjectLoadById();
-            }
-            elseif($customRouteParameter === 'test-developer-get-developer') {
-                $controller = new Test();
-                $controller->developerProjectGetDeveloper();
-            }
-            elseif($customRouteParameter === 'test-developer-get-project') {
-                $controller = new Test();
-                $controller->developerProjectGetProject();
-            }
-            elseif($customRouteParameter === 'test-developer-update') {
-                $controller = new Test();
-                $controller->developerProjectUpdate();
-            }
-            elseif($customRouteParameter === 'user-project-participation') {
-                $controller = new User();
-                $controller->projectParticipation();
-            }
-            elseif($customRouteParameter === 'user-technology') {
-                $controller = new User();
-                $controller->technology();
-            }
-            elseif($customRouteParameter === 'user-update-technology') {
-                $controller = new User();
-                $controller->updateTechnology();
-            }
-            */
 
             else {
                 // si nous ne souhaitons pas gérer nous même le template, nous retournons le template que wordpress voulait utiliser à la base
