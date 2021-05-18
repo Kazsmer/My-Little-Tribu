@@ -39,11 +39,13 @@
         // var_dump($current_user);
       ?>
         <p>
-          <?php echo '?><i class="far fa-user"></i> <?php Bonjour, vous êtes connecté en tant que ' . $current_user->user_nicename; ?>
-          
+          <?php echo 'Bonjour, vous êtes connecté en tant que ' . $current_user->user_nicename; ?>
           <a href="<?php echo wp_logout_url('http://localhost/projet-my-little-tribu/public/'); ?>"> Déconnexion </a>
         </p>
-
+      <?php else : ?>
+        <p>
+          <a href="<?php echo wp_login_url(); ?>"> Connexion </a>
+        </p>
       <?php endif; ?>
     </div>
 
