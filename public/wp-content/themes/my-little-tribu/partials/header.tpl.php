@@ -31,5 +31,8 @@
     <div>
       <a href="<?= get_home_url(); ?>/user/login">Se connecter</a>
     </div>
+
+    <?php   ?>;
+
   </div>
 </nav>
