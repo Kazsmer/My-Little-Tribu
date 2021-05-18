@@ -3,7 +3,6 @@
 namespace MyLittleTribu\Controller;
 
 use MyLittleTribu\Model\CoreModel;
-use MyLittleTribu\Model\GuestTribeProject;
 use MyLittleTribu\Model\WPUserModel;
 
 class PhotoController extends MainController
@@ -16,7 +15,10 @@ class PhotoController extends MainController
     public function processUpload()
 
     {
-        $this->show('process_upload.php');
+    
+        $r = require( get_template_part('process_upload') );
+       
+        //$this->show('process_upload.php');
     }
 
 

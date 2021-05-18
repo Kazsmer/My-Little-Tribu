@@ -3,6 +3,7 @@
 
 <?php 
 use MyLittleTribu\Model\GuestTribeModel;
+use MyLittleTribu\process_upload;
 
 get_header();
 ?>
@@ -29,7 +30,7 @@ get_header();
             <div class="col-lg-6">
               
               <div class="col-lg-12 px-0 pb-4">
-                  <input type="password" class="form-control" id="inputPassword2" placeholder="Titre de la photo">
+                  <input type="text" class="form-control" id="photoTitle" name="title" placeholder="Titre de la photo">
               </div>
               
               <div class="flex">              
@@ -53,7 +54,7 @@ get_header();
                   // pour chaque association guest/tribe
                   echo '<fieldset>';
                    echo '<div>';
-                     echo '<select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">';
+                     echo '<select class="custom-select" id="inputGroupSelect04" name="tribe" aria-label="Example select with button addon">';
                       echo '<option selected> Choisis ta Tribu </option>';
                       foreach ($tribeParticipations as $participation) {
                         $tribe = $participation->getTribe();
