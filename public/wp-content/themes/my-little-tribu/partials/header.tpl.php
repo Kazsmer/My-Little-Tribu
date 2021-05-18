@@ -28,11 +28,24 @@
       </svg>
     </a>
 
-    <div>
+    <!-- <div>
       <a href="<?= get_home_url(); ?>/user/login">Se connecter</a>
-    </div>
+    </div> -->
 
-    <?php   ?>;
+    <div>
+      <?php
+      if (is_user_logged_in()) :
+        $current_user = wp_get_current_user();
+        // var_dump($current_user);
+      ?>
+        <p>
+          <?php echo '?><i class="far fa-user"></i> <?php Bonjour, vous êtes connecté en tant que ' . $current_user->user_nicename; ?>
+          
+          <a href="<?php echo wp_logout_url('http://localhost/projet-my-little-tribu/public/'); ?>"> Déconnexion </a>
+        </p>
+
+      <?php endif; ?>
+    </div>
 
   </div>
 </nav>
