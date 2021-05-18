@@ -71,7 +71,6 @@ get_header();
                       $i=0;
               echo '<div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">';
               echo '<a href="work-single.html" class="item-wrap fancybox">';
-              //echo '<h1  class="mb-3">' . $all->post_title . '</h1>';
               echo '<div style="display: flex;" class="mb-3">';
               if(empty($terms0)){
                 echo '<span class="badge badge-info mr-1"></span>';
@@ -170,7 +169,6 @@ get_header();
 
           echo '<div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">';
           echo '<a href="work-single.html" class="item-wrap fancybox">';
-          echo '<h1  class="mb-3">' . $all->post_title . '</h1>';
           echo '<div style="display: flex;" class="mb-3">';
           if(empty($terms0)){
             echo '<span class="badge badge-info mr-1"></span>';

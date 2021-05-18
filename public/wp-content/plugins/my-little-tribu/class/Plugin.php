@@ -5,7 +5,6 @@ namespace MyLittleTribu;
 use MyLittleTribu\Model\GuestTribeModel;
 use MyLittleTribu\Model\TribeModel;
 use MyLittleTribu\Router;
-use MyLittleTribu\CustomPostType\Generic;
 use MyLittleTribu\CustomPostType\Photo;
 use MyLittleTribu\CustomPostType\Tribe;
 use WP_Query;
@@ -15,6 +14,7 @@ class Plugin
     public function __construct()
     {
         $this->initialize();
+        $router = new Router();
     }
     
     public static function activate()
@@ -51,27 +51,5 @@ class Plugin
         $tribe = new Tribe();
         $tribe->initialize();
 
-        register_taxonomy(
-            'event',  //identifiant
-            ['photo'], // a quel cpt la taxonomie est associée
-            [
-                'label' => 'Evenement',
-                'public' => true,   // gérable depuis le bo
-                'show_in_rest' => true,
-                'hierarchical' => true,
-            ]
-        );
-
-        register_taxonomy(
-            'person',
-            ['photo'],
-            [
-                'label' => 'Personnage',
-                'public' => true,
-                'show_in_rest' => true,
-                'hierarchical' => true,
-            ]
-        );
-        $router = new Router();
     }
 }

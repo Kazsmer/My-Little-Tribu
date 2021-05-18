@@ -2,6 +2,8 @@
 
 namespace MyLittleTribu\CustomPostType;
 
+use WP_Query;
+
 class Tribe
 {
     public function initialize()
@@ -47,7 +49,6 @@ class Tribe
             'posts_per_page' => -1
         ];
 
-        // WARNING wp_query : Très important !
         // DOC wp_query https://developer.wordpress.org/reference/classes/wp_query/
         // construction de la requête
         $wpQuery = new WP_Query($options);
