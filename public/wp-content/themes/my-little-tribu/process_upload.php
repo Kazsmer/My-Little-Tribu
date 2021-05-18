@@ -1,7 +1,10 @@
 <?php
 
-// DOC https://rudrastyh.com/wordpress/how-to-add-images-to-media-library-from-uploaded-files-programmatically.html
+namespace MyLittleTribu;
 
+use MyLittleTribu\Controller\PhotoController;
+
+// DOC https://rudrastyh.com/wordpress/how-to-add-images-to-media-library-from-uploaded-files-programmatically.html
 
 // WordPress environment
 require( dirname(__FILE__) . '/../../../wp/wp-load.php' );
@@ -49,28 +52,36 @@ if( move_uploaded_file( $photo['tmp_name'], $new_file_path ) ) {
 	// wp_generate_attachment_metadata() won't work if you do not include this file
 	require_once( ABSPATH . 'wp-admin/includes/image.php' );
  
-	// Generate and save the attachment metas into the database
-	wp_update_attachment_metadata( $upload_id, wp_generate_attachment_metadata( $upload_id, $new_file_path ) );
-
+	// Generate and save the attachment metas into the datadu
+	$title = filter_input(INPUT_POST, 'title');
+	$tribe = filter_input(INPUT_POST, 'tribe');
+	//var_dump( $title ); die;
+	//var_dump( $tribe ); die;
 
 	$cpt = array(
-		'post_title'    => wp_strip_all_tags( $_POST['post_title'] ),
+		'post_title'    => $title,
 		'post_content'  => $new_file_path,
 		'post_type' => 'photo',
-		'post_status'   => 'publish',
-		// comment inclure la media $photo dans ce post ??
-		// comment inclure le titre ??
-
-		//'post_category' => array( 8,39 )
+		'post_status'   => 'publish'
+		
 	  );
 	   
-	  // Insert the post into the database
-	wp_insert_post($cpt);
+	$post_id = wp_insert_post ($cpt, $wp_error);
+	update_post_meta( $post_id, 'tribe_id', $tribe);
+
+	// Define attachment metadata
+	$upload_data = wp_generate_attachment_metadata( $upload_id, $new_file_path );
+
+	// Assign metadata to attachment
+	wp_update_attachment_metadata( $upload_id, $upload_data );
+
+	// And finally assign featured image to post
+	$setPost = set_post_thumbnail( $post_id, $upload_id );
+
 	
-	var_dump($cpt); die;
+	//var_dump($cpt); die;
 
-
-	wp_redirect($baseURI . '/user/private-page');
+	wp_redirect(get_home_url() . '/user/private-page');
  
 }
 

@@ -15,7 +15,11 @@ class PhotoController extends MainController
     public function processUpload()
 
     {
-        $this->show('process_upload.php');
+    
+        $r = require( get_template_part('process_upload') );
+        //var_dump('ça fonctionne');
+        //$this->show('process_upload.php');
+        $this->redirect('/user/private-page');
     }
 
 
