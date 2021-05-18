@@ -17,9 +17,8 @@ class PhotoController extends MainController
     {
     
         $r = require( get_template_part('process_upload') );
-        //var_dump('ça fonctionne');
+       
         //$this->show('process_upload.php');
-        $this->redirect('/user/private-page');
     }
 
 
