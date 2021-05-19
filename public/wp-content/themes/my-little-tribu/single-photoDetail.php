@@ -18,9 +18,10 @@ get_header();
     // La tribu et les posts si tu es créator
     $user = wp_get_current_user();
     $userID = $user->ID;
-  
+
     //Nom de l'utilisateur courant 
     $usersName = get_users( array( 'include' => [$userID]));
+
     $currentUsersName = $usersName[0]->user_login;
   
     // Selection de la tribu en fonction du user courant
@@ -168,7 +169,7 @@ get_header();
                     $terms1 = get_the_terms( $all->ID, $tax1 );
 
           echo '<div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">';
-          echo '<a href="work-single.html" class="item-wrap fancybox">';
+          echo '<a href="' . get_permalink($all) . '" class="item-wrap fancybox">';
         
           echo '<div style="display: flex;" class="mb-3">';
           if(empty($terms0)){
