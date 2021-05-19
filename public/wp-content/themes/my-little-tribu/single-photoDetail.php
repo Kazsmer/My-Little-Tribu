@@ -201,7 +201,7 @@ get_header();
 ?>
 
   </div class="col-md-6 mt-4" data-aos="fade-up" data-aos-delay="100">
-    <form action="<?=get_home_url();?>/uploadPhoto" method="post">
+    <form action="<?=get_home_url();?>/user/invitation" method="post">
       <button class="col-lg-5 col-md-5 col-sm-5 col-sm-5 col-5 readmore">
       J'invite un proche
       </button>
