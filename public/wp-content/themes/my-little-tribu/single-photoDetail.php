@@ -47,7 +47,6 @@ get_header();
         echo '<div class="container">';
           echo '<div class="row mb-5 align-items-center">';
             echo '<div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">';
-              // echo '<h2>Bonjour, ' . $currentUsersName . '</h2>';
               echo '<div>';
               echo '<h2 class="mt-3">  Bienvenue dans votre tribu -> <strong>' . $chose->post_title .'</strong></h2>';
               echo '</div>';

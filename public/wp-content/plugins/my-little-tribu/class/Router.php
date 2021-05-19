@@ -140,6 +140,13 @@ class Router
         );
 
         add_rewrite_rule(
+            'views/addpicture/?$',
+            'index.php?custom-route=views-addpicture',
+            'top'
+        );
+
+
+        add_rewrite_rule(
             'single-photoDetail/?$',
             'index.php?custom-route=single-photoDetail',
             'top'
@@ -226,6 +233,11 @@ class Router
             elseif ($customRouteParameter === 'single-photoDetail') {
                 $controller = new PhotoController();
                 $controller->displayPhoto();
+            }
+
+            elseif ($customRouteParameter === 'views-addpicture') {
+                $controller = new PhotoController();
+                $controller->uploadPhoto();
             }
 
             else {
