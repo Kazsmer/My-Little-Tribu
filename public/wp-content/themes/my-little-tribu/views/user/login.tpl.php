@@ -27,7 +27,7 @@ get_header();
             <div class="col-lg-12">
               <div class="col-lg-12 px-0 pb-4">
                 <div class="input-group">
-                  <input type="email" name="email" class="form-control" id="inputPassword2" placeholder="Ton email">
+                  <input type="text" name="email" class="form-control" id="inputPassword2" placeholder="Ton pseudo ou ton email">
               </div>
             </div>
             <div class="col-lg-12 px-0 pb-4">

@@ -58,8 +58,6 @@ class UserController extends MainController
         $this->show('views/user/register.tpl.php');
     }
 
-   
-
     public function create()
     {
 
