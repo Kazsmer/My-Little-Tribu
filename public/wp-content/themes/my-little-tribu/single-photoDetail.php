@@ -18,9 +18,10 @@ get_header();
     // La tribu et les posts si tu es créator
     $user = wp_get_current_user();
     $userID = $user->ID;
-  
+
     //Nom de l'utilisateur courant 
     $usersName = get_users( array( 'include' => [$userID]));
+
     $currentUsersName = $usersName[0]->user_login;
   
     // Selection de la tribu en fonction du user courant

@@ -38,17 +38,19 @@ get_header();
             <?php
             // charge le post courant
               get_post();
-
               // récupèrer la valeur du post meta (liste de tableaux)
               $customMeta = get_post_meta(get_post()->ID,'', true);
-              
+              //var_dump($customMeta);
               // boucle sur les tableaux                 
               $i=0;
               foreach ($customMeta as $customMeta) {
                 $i++;
-                if($i == 4){
+                //var_dump($customMeta);
+                if($i == 3){
                   // recuperation de l'id de la tribu dans le 4eme tableaux
                 $id = $customMeta[0];
+                //var_dump($id);
+                break;
                 }
               }
 
