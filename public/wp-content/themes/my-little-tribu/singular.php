@@ -59,7 +59,6 @@ get_header();
               );
 
               $querytribe = new WP_Query( $args );
-
               // Nom de la tribu
               $tribeTitle = $querytribe->posts[0]->post_title;
 
