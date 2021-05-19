@@ -139,6 +139,26 @@ class Router
             'top'
         );
 
+        add_rewrite_rule(
+            'views/addpicture/?$',
+            'index.php?custom-route=views-addpicture',
+            'top'
+        );
+
+
+        add_rewrite_rule(
+            'single-photoDetail/?$',
+            'index.php?custom-route=single-photoDetail',
+            'top'
+        );
+
+        add_rewrite_rule(
+            'photo-by-tribu-id/?$',
+            'index.php?custom-route=photo-by-tribu-id',
+            'top'
+        );
+
+
 
 
 
@@ -218,6 +238,22 @@ class Router
             elseif ($customRouteParameter === 'process_upload') {
                 $controller = new PhotoController();
                 $controller->processUpload();
+            }
+
+            elseif ($customRouteParameter === 'single-photoDetail') {
+                $controller = new PhotoController();
+                $controller->displayPhoto();
+            }
+
+
+            elseif ($customRouteParameter === 'photo-by-tribu-id') {
+                $controller = new PhotoController();
+                $controller->displayPhotobyTribuId();
+            }
+
+            elseif ($customRouteParameter === 'views-addpicture') {
+                $controller = new PhotoController();
+                $controller->uploadPhoto();
             }
 
             else {

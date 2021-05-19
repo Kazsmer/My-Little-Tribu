@@ -2,205 +2,138 @@
 <html lang="en">
 
 <?php 
-use MyLittleTribu\Model\GuestTribeModel;
-
-
 get_header();
+
+  // Private-Page
+    // -> Lien <a>
+     // -> Premalink (post->private_page)
+  
+  // PhotoDetails
+    // var_dump (get_post)
+     //blabla
+
+      // (post_id->private_page) === (post_id->photo_details)
+
+      //get_the_category (event)
+
+
 ?>
+
+<?php 
+
+  if(have_posts()) : while (have_posts()) : the_post();
+
+?>
+
 
 <body>
-<?php get_template_part('partials/header.tpl');
-?>
+<?php get_template_part('partials/header.tpl');?>
+  <main id="main">
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5 align-items-center">
+          <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
+            <h2><?php the_title() ?></h2>
+            <div>
+            <?php
+            // charge le post courant
+              get_post();
 
-
-<main id="main">
-
-  <?php
-    // La tribu et les posts si tu es créator
-    $user = wp_get_current_user();
-    $userID = $user->ID;
-  
-    //Nom de l'utilisateur courant 
-    $usersName = get_users( array( 'include' => [$userID]));
-    $currentUsersName = $usersName[0]->user_login;
-  
-    // Selection de la tribu en fonction du user courant
-    $usertribe = new WP_Query( array( 'author' => $userID, 'post_type' => 'tribe' ) );
-    $chosetribe = $usertribe->posts;
-
-    // PREMIERE BOUCLE 
-    
-      foreach ($chosetribe as $chose) {
-        // Photos de la tribu
-        $args = array(
-          'meta_value' => $chose->ID,
-          'post_type'  => 'photo'
-        );
-        $query = new WP_Query( $args );
-  
-        // Toutes les photos
-        $photo = $query->posts;
-        $counterPhots = count($photo);
-  
-        $photoL = $query->posts;
-        
-      echo '<div class="site-section site-portfolio">';
-        echo '<div class="container">';
-          echo '<div class="row mb-5 align-items-center">';
-            echo '<div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">';
-              echo '<h2>Bonjour, ' . $currentUsersName . '</h2>';
-              echo '<div>';
-              echo '<p class="mt-3"> Ma tribu -> <strong>' . $chose->post_title .'</strong></p>';
-              echo '</div>';
-            echo '</div>';
-          echo '<div class="col-md-12 col-lg-6 text-left text-lg-right" data-aos="fade-up" data-aos-delay="100">';
-        echo '</div>';
-        echo '<div class="col-md-6 mt-4" data-aos="fade-up" data-aos-delay="100">';
-          echo '<button class="readmore d-block w-50"> Ajouter une image </button>';
-          echo '<a href="#" style="color: rgb(255, 87, 87); font-size: 9pt;">Supprimer ma tribu</a>';
-        echo '</div>';
-        echo '</div>';
-          echo '<div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">';
-          // Toutes les photos
-          foreach ($photoL as $all) {
-                    // Les Taxonomies de tous les posts
-                      $tax0 = 'event';
-                      $tax1 = 'person';
-                      $terms0 = get_the_terms( $all->ID, $tax0 );
-                      $terms1 = get_the_terms( $all->ID, $tax1 );
-                      $i=0;
-              echo '<div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">';
-              echo '<a href="work-single.html" class="item-wrap fancybox">';
-              //echo '<h1  class="mb-3">' . $all->post_title . '</h1>';
-              echo '<div style="display: flex;" class="mb-3">';
-              if(empty($terms0)){
-                echo '<span class="badge badge-info mr-1"></span>';
-              }else{
-                foreach ($terms0 as $terms) {
-                  $i++;
-                  echo '<span class="badge badge-pill badge-info mr-1">'. $terms->slug .'</span>';
-                  if($i == '2'){
-                    break;
-                  }
+              // récupèrer la valeur du post meta (liste de tableaux)
+              $customMeta = get_post_meta(get_post()->ID,'', true);
+              
+              // boucle sur les tableaux                 
+              $i=0;
+              foreach ($customMeta as $customMeta) {
+                $i++;
+                if($i == 4){
+                  // recuperation de l'id de la tribu dans le 4eme tableaux
+                $id = $customMeta[0];
                 }
               }
-              if(empty($terms1)){
-                echo '<span class="badge badge-info mr-1"></span>';
-              }else{
-                  foreach ($terms1 as $terms) {
-                    $i++;
-                      echo '<span class="badge badge-pill badge-warning mr-1">'. $terms->slug .'</span>';
-                      if($i == '2'){
-                        break;
-                      }
-                  }
-              }
-              echo '</div>';
-              //$categoriesList = get_the_category($all->ID);
-              echo '<div style="width:350px; height:350px; overflow: hidden;">';
-                echo '<img class="img-zoom" src="' . get_the_post_thumbnail_url($all->ID, 'large') . '">';
-                //echo '<div style="background-size: cover; background: url(' . get_the_post_thumbnail_url($all->ID, 'medium') . '); width:350px; height:350px;"></div>';
-                //echo get_the_post_thumbnail( $all->ID, 'large', array('class' => 'img-fluid') );
-              echo '</div>';
-              echo '</a>';
-              echo '</div>';
 
-          }
-          echo '</div>';
-        echo '</div>';
-      echo '</div>';
-      }
-  
-     
-    // La tribu et les posts si tu es guest (d'une seul tribu)
-    $guestTribeModel = new GuestTribeModel();
-    $tribeParticipations = $guestTribeModel->getTribeByGuestId($userID);
-    foreach ($tribeParticipations as $tribes) {
-      // ID de la tribu
-      $args = array(
-        'post_type' => 'tribe',
-        'p' => $tribes->tribe_id
-      );
-      $querytribe = new WP_Query( $args );
-    
-      // Nom de la tribu
-      $tribeTitle = $querytribe->posts[0]->post_title;
-  
-          // Photos de la tribu
-      $args = array(
-        'meta_value' => $tribes->tribe_id,
-        'post_type'  => 'photo'
-      );
-      $query = new WP_Query( $args );
-  
-      // Toutes les photos
-      $photo = $query->posts;
-      $counterPhots = count($photo);
-  
-      $photoL = $query->posts;
-    
-    // DEUXIEME BOUCLE 
-    // les users guest
-    $guestTribeModel = new GuestTribeModel();
-    $guestParticipations = $guestTribeModel->getGuestByTribeId($tribes->tribe_id);
-  
+              // chercher dans le CPT tribu le post de l'id recupere
+              $args = array(
+                'post_type' => 'tribe',
+                'p' => $id
+              );
 
-    echo '<div class="site-section site-portfolio">';
-    echo '<div class="container">';
-      echo '<div class="row mb-5 align-items-center">';
-        echo '<div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">';
-          echo '<div>';
-          echo '<p class="mb-2"> Tribu Invité -> <strong>' . $tribeTitle .'</strong></p>';
-          echo '</div>';
-        echo '</div>';
-      echo '<div class="col-md-12 col-lg-6 text-left text-lg-right" data-aos="fade-up" data-aos-delay="100">';
-    echo '</div>';
-    echo '<div class="col-md-6 mt-4" data-aos="fade-up" data-aos-delay="100">';
-      echo '<button class="readmore d-block w-50"> Ajouter une image </button>';
-    echo '</div>';
-    echo '</div>';
-      echo '<div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">';
-      // Toutes les photos
-      foreach ($photoL as $all) {
-                    // Les Taxonomies de tous les posts
-                    $tax0 = 'event';
-                    $tax1 = 'person';
-                    $terms0 = get_the_terms( $all->ID, $tax0 );
-                    $terms1 = get_the_terms( $all->ID, $tax1 );
+              $querytribe = new WP_Query( $args );
 
-          echo '<div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">';
-          echo '<a href="work-single.html" class="item-wrap fancybox">';
-          echo '<h1  class="mb-3">' . $all->post_title . '</h1>';
-          echo '<div style="display: flex;" class="mb-3">';
-          if(empty($terms0)){
-            echo '<span class="badge badge-info mr-1"></span>';
-          }else{
-            foreach ($terms0 as $terms) {
-              echo '<span class="badge badge-info mr-1">'. $terms->slug .'</span>';
-            }
-          }
-          if(empty($terms1)){
-            echo '<span class="badge badge-info mr-1"></span>';
-          }else{
-              foreach ($terms1 as $terms) {
-                  echo '<span class="badge badge-info mr-1">'. $terms->slug .'</span>';
-              }
-          }
-          echo '</div>';
-          echo '<img class="img-zoom" src="' . get_the_post_thumbnail_url($all->ID, 'large') . '">';
-          echo '</a>';
-          echo '</div>';
+              // Nom de la tribu
+              $tribeTitle = $querytribe->posts[0]->post_title;
 
-      }
-      echo '</div>';
-    echo '</div>';
-  echo '</div>';
+              echo '<p class="mb-2">' . $tribeTitle . '</p>'
+            ?>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    }
-  ?>
+      <div class="site-section pb-0">
+        <div class="container">
+          <div class="row align-items-stretch">
+            <div class="col-md-8" data-aos="fade-up">
+              <img src="<?php the_post_thumbnail_url() ?>" alt="Image" class="img-fluid">
+            </div>
+            <div class="col-md-3 ml-auto" data-aos="fade-up" data-aos-delay="100">
+              <div class="sticky-content">
+                <h3 class="h3">Doe Garcia</h3>
+                <p class="mb-4"><span class="text-muted">My super tribu</span></p>
 
-</main>
+                <div>
+                  <p>Super ! :)</p>
 
+                </div>
+              </div>
+              <div class="sticky-content mt-4">
+                <h3 class="h3">Doe Marietta</h3>
+                <p class="mb-4"><span class="text-muted">My super tribu</span></p>
+
+                <div>
+                  <p>Marietta ! :)</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="site-section pb-0">
+        <div class="container">
+          <div class="row justify-content-center text-center mb-4">
+            <div class="col-12">
+              <h3 class="h3 heading">Laissez un commentaire !</h3>
+              <?php comment_form([
+                'title_reply' => '',
+                'class_container' => 'col-12',
+                'class_form' => 'col-12',
+                'class_submit' => 'col-12'
+                ])?>
+              <form action="">
+                <div class="form-group w-100">
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <div class="center">
+                  <button class="readmore d-block w-50">
+                    Ajouter un commentaire
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="justify-content-end">
+            <a class="mt-5" href="#" style="color: rgb(255, 87, 87); font-size: 9pt;">Supprimer ma tribu</a>
+          </div>
+        </div>
+      </div>
+
+      <?php
+      endwhile; endif; 
+      ?>
+  </main>
   <?php get_template_part('partials/footer.tpl');?>
   <?php 
 get_footer();
