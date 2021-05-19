@@ -48,9 +48,9 @@ get_header();
         echo '<div class="container">';
           echo '<div class="row mb-5 align-items-center">';
             echo '<div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">';
-              echo '<h2>Bonjour, ' . $currentUsersName . '</h2>';
+              // echo '<h2>Bonjour, ' . $currentUsersName . '</h2>';
               echo '<div>';
-              echo '<p class="mt-3"> Ma tribu -> <strong>' . $chose->post_title .'</strong></p>';
+              echo '<h2 class="mt-3"> Bienvenue dans votre tribu <strong>' . $chose->post_title .'</strong></h2>';
               echo '</div>';
             echo '</div>';
           echo '<div class="col-md-12 col-lg-6 text-left text-lg-right" data-aos="fade-up" data-aos-delay="100">';
@@ -71,6 +71,7 @@ get_header();
                       $i=0;
               echo '<div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">';
               echo '<a href="work-single.html" class="item-wrap fancybox">';
+              //echo '<h1  class="mb-3">' . $all->post_title . '</h1>';
               echo '<div style="display: flex;" class="mb-3">';
               if(empty($terms0)){
                 echo '<span class="badge badge-info mr-1"></span>';
@@ -149,7 +150,7 @@ get_header();
       echo '<div class="row mb-5 align-items-center">';
         echo '<div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">';
           echo '<div>';
-          echo '<p class="mb-2"> Tribu Invité -> <strong>' . $tribeTitle .'</strong></p>';
+          echo '<h2 class="mb-2"> Vous êtes invité dans la tribu <strong>' . $tribeTitle .'</strong> </h2>';
           echo '</div>';
         echo '</div>';
       echo '<div class="col-md-12 col-lg-6 text-left text-lg-right" data-aos="fade-up" data-aos-delay="100">';
@@ -169,6 +170,7 @@ get_header();
 
           echo '<div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">';
           echo '<a href="work-single.html" class="item-wrap fancybox">';
+        
           echo '<div style="display: flex;" class="mb-3">';
           if(empty($terms0)){
             echo '<span class="badge badge-info mr-1"></span>';
