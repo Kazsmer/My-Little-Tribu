@@ -33,7 +33,7 @@ class UserController extends MainController
           $this->authentificateUser($result->ID);
 
           // nous redirigeons l'utilisateur vers sa home personnelle
-          $this->redirect('/user/private-page');
+          $this->redirect('/single-photoDetail');
 
       }
       else {
@@ -57,6 +57,8 @@ class UserController extends MainController
     {
         $this->show('views/user/register.tpl.php');
     }
+
+   
 
     public function create()
     {

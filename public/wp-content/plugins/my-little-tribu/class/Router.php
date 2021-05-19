@@ -139,6 +139,12 @@ class Router
             'top'
         );
 
+        add_rewrite_rule(
+            'single-photoDetail/?$',
+            'index.php?custom-route=single-photoDetail',
+            'top'
+        );
+
         // wordpress enregistre le url en base de donnée. Etant donné que nous déclarons une nouvelle route, de façon "brutale" nous forçons wordpress à rafraichir sont cache d'url
         flush_rewrite_rules();
 
@@ -217,12 +223,10 @@ class Router
                 $controller->processUpload();
             }
 
-         /*   elseif ($customRouteParameter === 'single-photo') {
+            elseif ($customRouteParameter === 'single-photoDetail') {
                 $controller = new PhotoController();
-                $controller->singlePhoto();
+                $controller->displayPhoto();
             }
-
-            */
 
             else {
                 // si nous ne souhaitons pas gérer nous même le template, nous retournons le template que wordpress voulait utiliser à la base
