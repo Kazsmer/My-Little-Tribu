@@ -13,14 +13,9 @@ class PhotoController extends MainController
     }
 
     public function processUpload()
-
     {
-    
         $r = require( get_template_part('process_upload') );
-       
         //$this->show('process_upload.php');
     }
-
-
 
 }
