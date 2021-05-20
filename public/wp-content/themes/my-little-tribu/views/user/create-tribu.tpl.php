@@ -32,16 +32,15 @@ get_header();
         </div>
 
         <div class="container">
-          <form method="post" action="<?=get_home_url();?>/single-photoDetail" class="row" data-aos="fade-up">
+          <form method="post" action="<?=get_home_url();?>/" class="row" data-aos="fade-up">
             <div class="col-lg-12 px-0">
-              <div class="col-lg-12 px-0 pb-4">
-                <p class="mt-3" style="text-align:center"> ou </p>
+              <div>
               </div>
             </div>
-              <div class="px-0 mt-2 col-md-12 col-sm-9 col-sm-12 col-12 b-button-right">
-                <button class="col-md-12 col-sm-9 col-sm-12 col-12 readmore">
-                  Je vais sur ma page
+            <div style= "width: 100%; display:flex; justify-content:flex-end;" class="mt-5">
+                <button class="btn btn-light btn-sm"> J'attends une invitation<br> retour à l'accueil
                 </button>
+                </div>
               </div>
             </div>
             </form>

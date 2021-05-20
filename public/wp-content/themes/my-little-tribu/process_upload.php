@@ -81,7 +81,7 @@ if( move_uploaded_file( $photo['tmp_name'], $new_file_path ) ) {
 	
 	//var_dump($cpt); die;
 
-	wp_redirect(get_home_url() . '/user/private-page');
+	wp_redirect(get_home_url() . '/single-photoDetail');
  
 }
 
