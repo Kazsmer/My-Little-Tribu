@@ -46,21 +46,17 @@ class PhotoController extends MainController
  */
     }
 
+    public function deletePhoto () {
 
-    function wp_delete_post($postid = 0, $force_delete = false)
-    {
-        global $wpdb;
-     
-        $post = $wpdb->get_row($wpdb->prepare("SELECT * FROM $wpdb->posts WHERE ID = %d", $postid));
-     
-        if (! $post) {
-            return $post;
-        }
-     
-        $post = get_post($post);
+        // DOC https://developer.wordpress.org/reference/functions/wp_delete_post/
+
+        global $post;
+        echo $post->ID;
+        //$postId=get_post();
+        //var_dump($postId);die;
+        //wp_delete_post(get_post()->ID);
+    
     }
 
-
-
-    }
+}
 

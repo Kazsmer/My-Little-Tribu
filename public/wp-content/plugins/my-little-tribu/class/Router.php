@@ -152,6 +152,13 @@ class Router
             'top'
         );
 
+        add_rewrite_rule(
+            'delete-photo/?$',
+            'index.php?custom-route=delete-photo',
+            'top'
+        );
+
+
         // wordpress enregistre le url en base de donnée. Etant donné que nous déclarons une nouvelle route, de façon "brutale" nous forçons wordpress à rafraichir sont cache d'url
         flush_rewrite_rules();
 
@@ -239,6 +246,13 @@ class Router
                 $controller = new PhotoController();
                 $controller->uploadPhoto();
             }
+
+            elseif ($customRouteParameter === 'delete-photo') {
+                $controller = new PhotoController();
+                $controller->deletePhoto();
+            }
+
+
 
             else {
                 // si nous ne souhaitons pas gérer nous même le template, nous retournons le template que wordpress voulait utiliser à la base

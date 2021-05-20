@@ -114,7 +114,7 @@ get_header();
             </div>
           </div>
           <div class="justify-content-end">
-            <a class="mt-5" href="#" style="color: rgb(255, 87, 87); font-size: 9pt;">Supprimer ma tribu</a>
+            <a class="mt-5" href="<?=get_home_url();?>/delete-photo" style="color: rgb(255, 87, 87); font-size: 9pt;">Supprimer cette photo</a>
           </div>
         </div>
       </div>
