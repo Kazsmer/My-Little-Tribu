@@ -139,8 +139,18 @@ class Router
             'top'
         );
 
+        add_rewrite_rule(
+            'views/addpicture/?$',
+            'index.php?custom-route=views-addpicture',
+            'top'
+        );
 
 
+        add_rewrite_rule(
+            'single-photoDetail/?$',
+            'index.php?custom-route=single-photoDetail',
+            'top'
+        );
 
         // wordpress enregistre le url en base de donnée. Etant donné que nous déclarons une nouvelle route, de façon "brutale" nous forçons wordpress à rafraichir sont cache d'url
         flush_rewrite_rules();
@@ -218,6 +228,16 @@ class Router
             elseif ($customRouteParameter === 'process_upload') {
                 $controller = new PhotoController();
                 $controller->processUpload();
+            }
+
+            elseif ($customRouteParameter === 'single-photoDetail') {
+                $controller = new PhotoController();
+                $controller->displayPhoto();
+            }
+
+            elseif ($customRouteParameter === 'views-addpicture') {
+                $controller = new PhotoController();
+                $controller->uploadPhoto();
             }
 
             else {

@@ -12,7 +12,6 @@ get_header();
   <?php get_template_part('partials/header.tpl');?>
   <main id="main">
     <div class="site-section">
-
       <div class="site-section pb-0">
         <div class="container">
           <form method="post" action="<?=get_home_url();?>/user/create-tribu-name" class="row" data-aos="fade-up">
@@ -31,6 +30,25 @@ get_header();
             </div>
             </form>
         </div>
+
+        <div class="container">
+          <form method="post" action="<?=get_home_url();?>/single-photoDetail" class="row" data-aos="fade-up">
+            <div class="col-lg-12 px-0">
+              <div class="col-lg-12 px-0 pb-4">
+                <p class="mt-3" style="text-align:center"> ou </p>
+              </div>
+            </div>
+              <div class="px-0 mt-2 col-md-12 col-sm-9 col-sm-12 col-12 b-button-right">
+                <button class="col-md-12 col-sm-9 col-sm-12 col-12 readmore">
+                  Je vais sur ma page
+                </button>
+              </div>
+            </div>
+            </form>
+        </div>
+
+
+
       </div>
   </main>
   
