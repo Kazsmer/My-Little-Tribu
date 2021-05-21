@@ -32,13 +32,11 @@
       <?php
       if (is_user_logged_in()) :
         $current_user = wp_get_current_user();
-        // var_dump($current_user);
       ?>
         <p>
           <?php echo 'Bonjour ' . $current_user->user_nicename ; ?>
           <a href="<?php echo wp_logout_url(get_home_url()); ?>">&nbsp&nbspDéconnexion </a>
         </p>
-
       <?php endif; ?>
     </div>
 
