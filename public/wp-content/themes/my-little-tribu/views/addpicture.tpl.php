@@ -25,7 +25,7 @@ get_header();
 
       <div class="site-section pb-0">
         <div class="container">
-          <form class="row" data-aos="fade-up" action="<?=get_home_url();?>/processUpload" method="post" enctype="multipart/form-data">
+          <form class="row" data-aos="fade-up" action="<?=get_home_url();?>/process-upload" method="post" enctype="multipart/form-data">
             
             <div class="col-lg-6">
               

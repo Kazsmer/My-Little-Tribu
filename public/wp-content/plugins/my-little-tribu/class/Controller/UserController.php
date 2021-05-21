@@ -33,7 +33,7 @@ class UserController extends MainController
           $this->authentificateUser($result->ID);
 
           // nous redirigeons l'utilisateur vers sa home personnelle
-          $this->redirect('/single-photoDetail');
+          $this->redirect('/single-private-page');
 
       }
       else {
