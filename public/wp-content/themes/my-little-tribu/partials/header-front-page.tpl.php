@@ -30,9 +30,9 @@
 
     <div>
 
-      <?php
-        if (is_user_logged_in()) :
-          $current_user = wp_get_current_user();
+        <?php
+          if (is_user_logged_in()) :
+            $current_user = wp_get_current_user();
         ?>
             <p>
               <?php echo 'Bonjour ' . $current_user->user_nicename ; ?>
@@ -41,7 +41,7 @@
         <?php
           else:
         ?>
-            <a href="<?= get_home_url(); ?>/user/login">Se connecter</a>
+            <a href="<?= get_home_url(); ?>/user/login">Connexion</a>
         <?php endif; ?>
 
     </div>
