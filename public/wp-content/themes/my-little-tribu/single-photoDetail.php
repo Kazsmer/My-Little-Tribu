@@ -57,7 +57,11 @@ get_header();
           echo '<form action="http://localhost/projet-my-little-tribu/public/uploadPhoto/" method="post">';
            echo '<button class="readmore d-block w-50"> Ajouter une image </button>';
           echo '</form>';
-          echo '<a href="#" style="color: rgb(255, 87, 87); font-size: 9pt;">Supprimer ma tribu</a>';
+
+
+          $deleteTribeLink = get_home_url() . "/tribe-delete?id=" . $chose->ID;
+
+          echo '<a href="' . $deleteTribeLink . '" style="color: rgb(255, 87, 87); font-size: 9pt;">Supprimer ma tribu</a>';
         echo '</div>';
         echo '</div>';
           echo '<div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">';

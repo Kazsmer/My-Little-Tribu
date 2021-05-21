@@ -2,6 +2,7 @@
 <html lang="en">
 
 <?php 
+
 get_header();
 
   // Private-Page
@@ -114,7 +115,10 @@ get_header();
             </div>
           </div>
           <div class="justify-content-end">
-            <a class="mt-5" href="<?=get_home_url();?>/delete-photo" style="color: rgb(255, 87, 87); font-size: 9pt;">Supprimer cette photo</a>
+            <?php
+              $deleteLink = get_home_url() . '/delete-photo?id=' . get_the_id();
+            ?>
+            <a class="mt-5" href="<?=$deleteLink;?>" style="color: rgb(255, 87, 87); font-size: 9pt;">Supprimer cette photo</a>
           </div>
         </div>
       </div>

@@ -5,7 +5,6 @@ namespace MyLittleTribu\Controller;
 use MyLittleTribu\Model\CoreModel;
 use MyLittleTribu\Model\WPUserModel;
 
-
 class PhotoController extends MainController
 {
     public function uploadPhoto()
@@ -50,13 +49,13 @@ class PhotoController extends MainController
 
         // DOC https://developer.wordpress.org/reference/functions/wp_delete_post/
 
-        global $post;
-        echo $post->ID;
-        //$postId=get_post();
-        //var_dump($postId);die;
-        //wp_delete_post(get_post()->ID);
-    
+        // $postId = $_GET['id'];
+        $postId = filter_input(INPUT_GET, 'id');
+        wp_delete_post($postId);
+
+        // redirection https://developer.wordpress.org/reference/functions/wp_redirect/
     }
 
 }
 
+?>
