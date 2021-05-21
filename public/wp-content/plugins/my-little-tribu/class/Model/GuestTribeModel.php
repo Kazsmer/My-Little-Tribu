@@ -193,7 +193,7 @@ class GuestTribeModel extends CoreModel
             $sql,
             [$guestId, $tribeId]
         );
-        wp_redirect(get_home_url() . '/single-photoDetail' );
+        wp_redirect(get_home_url() . '/single-private-page' );
     }
 
     public function update()
@@ -242,7 +242,7 @@ class GuestTribeModel extends CoreModel
                 'created_at' => date('Y-m-d H:i:s')
             ]
         );
-        wp_redirect(get_home_url() . '/user/private-page' );
+        wp_redirect(get_home_url() . '/user/invitation-success/' );
         exit;
     }
 }

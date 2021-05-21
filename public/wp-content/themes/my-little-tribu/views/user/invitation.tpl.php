@@ -14,7 +14,7 @@ get_header();
 
       <div class="site-section pb-0">
         <div class="container">
-          <form method="post" action="<?=get_home_url();?>/user/invitation-success" class="row" data-aos="fade-up">
+          <form method="post" action="<?=get_home_url();?>/user/addInvitation/" class="row" data-aos="fade-up">
             <div class="col-lg-12">
               <div class="col-lg-12 px-0 pb-4">
                 <div class="input-group">
