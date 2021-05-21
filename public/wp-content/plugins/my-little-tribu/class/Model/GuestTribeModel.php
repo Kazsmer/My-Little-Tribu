@@ -180,6 +180,22 @@ class GuestTribeModel extends CoreModel
         );
     }
 
+    public function guestDelete()
+    {
+        $guestId = filter_input(INPUT_GET, 'guest_id');
+        $tribeId = filter_input(INPUT_GET, 'tribe_id');
+        $sql = "
+            DELETE FROM " . $this->getTableName() . "
+            WHERE  `guest_id`=%d AND `tribe_id`=%d
+        ";
+
+        $this->execute(
+            $sql,
+            [$guestId, $tribeId]
+        );
+        wp_redirect(get_home_url() . '/single-photoDetail' );
+    }
+
     public function update()
     {
         $this->update_at = date('Y-m-d H:i:s');

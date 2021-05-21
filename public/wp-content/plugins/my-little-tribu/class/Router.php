@@ -6,6 +6,7 @@ use MyLittleTribu\Controller\UserController;
 use MyLittleTribu\Controller\TestController;
 use MyLittleTribu\Model\GuestTribeModel;
 use MyLittleTribu\Controller\PhotoController;
+use MyLittleTribu\Controller\TribeController;
 
 // Cette classe va nous permettre de dire à wordpress que certaine url seront gérées par le plugin
 class Router
@@ -152,6 +153,32 @@ class Router
             'top'
         );
 
+        add_rewrite_rule(
+            'delete-photo/?$',
+            'index.php?custom-route=delete-photo',
+            'top'
+        );
+
+        add_rewrite_rule(
+            'tribe-delete/?$',
+            'index.php?custom-route=tribe-delete',
+            'top'
+        );
+
+        add_rewrite_rule(
+            'user/invitation-success/?$',
+            'index.php?custom-route=user-invitation-success',
+            'top'
+        );
+
+        add_rewrite_rule(
+            'guest-delete/?$',
+            'index.php?custom-route=guest-delete',
+            'top'
+        );
+
+
+
         // wordpress enregistre le url en base de donnée. Etant donné que nous déclarons une nouvelle route, de façon "brutale" nous forçons wordpress à rafraichir sont cache d'url
         flush_rewrite_rules();
 
@@ -238,6 +265,26 @@ class Router
             elseif ($customRouteParameter === 'views-addpicture') {
                 $controller = new PhotoController();
                 $controller->uploadPhoto();
+            }
+
+            elseif ($customRouteParameter === 'delete-photo') {
+                $controller = new PhotoController();
+                $controller->deletePhoto();
+            }
+
+            elseif ($customRouteParameter === 'tribe-delete') {
+                $controller = new TribeController();
+                $controller->deleteTribe();
+            }
+            
+            elseif($customRouteParameter === 'user-invitation-success') {
+                $controller = new UserController();
+                $controller-> invitationSuccess();
+            }
+
+            elseif($customRouteParameter === 'guest-delete') {
+                $controller = new GuestTribeModel();
+                $controller-> guestDelete();
             }
 
             else {

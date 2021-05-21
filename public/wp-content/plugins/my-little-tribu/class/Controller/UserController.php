@@ -52,13 +52,11 @@ class UserController extends MainController
         $this->show('views/user/home.tpl.php');
     }
 
-
     public function register()
     {
         $this->show('views/user/register.tpl.php');
     }
 
-   
 
     public function create()
     {
@@ -226,6 +224,12 @@ class UserController extends MainController
     {
         $this->show('singular.php');
     }
+
+    public function invitationSuccess()
+    {
+        $this->show('views/user/invitation-success.tpl.php');
+    }
+
 
 }
 

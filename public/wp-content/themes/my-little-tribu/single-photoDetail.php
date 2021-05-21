@@ -57,7 +57,14 @@ get_header();
           echo '<form action="http://localhost/projet-my-little-tribu/public/uploadPhoto/" method="post">';
            echo '<button class="readmore d-block w-50"> Ajouter une image </button>';
           echo '</form>';
-          echo '<a href="#" style="color: rgb(255, 87, 87); font-size: 9pt;">Supprimer ma tribu</a>';
+            echo '<form action="' . get_home_url() . '/user/invitation" method="post">';
+            echo '<button class="readmore d-block w-50 mt-3 mb-3 bg-warning">J\'invite un proche</button>';
+          echo '</form>';
+
+
+          $deleteTribeLink = get_home_url() . "/tribe-delete?id=" . $chose->ID;
+
+          echo '<a href="' . $deleteTribeLink . '" style="color: rgb(255, 87, 87); font-size: 9pt;">Supprimer ma tribu</a>';
         echo '</div>';
         echo '</div>';
           echo '<div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">';
@@ -151,6 +158,9 @@ get_header();
         echo '<div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">';
           echo '<div>';
           echo '<h2 class="mb-2"> Vous êtes invité dans la tribu <strong>' . $tribeTitle .'</strong></h2>';
+          $deleteTribeInvitation = get_home_url() . "/guest-delete?guest_id=" . $userID . "&tribe_id=" . $tribes->tribe_id;
+
+          echo '<a href="' . $deleteTribeInvitation . '" style="color: rgb(255, 87, 87); font-size: 9pt;">Se désabonner</a>';
           echo '</div>';
         echo '</div>';
       echo '<div class="col-md-12 col-lg-6 text-left text-lg-right" data-aos="fade-up" data-aos-delay="100">';
@@ -198,14 +208,6 @@ get_header();
   echo '</div>';
   }
 ?>
-
-  </div class="col-md-6 mt-4" data-aos="fade-up" data-aos-delay="100">
-    <form action="<?=get_home_url();?>/user/invitation" method="post">
-      <button class="col-lg-5 col-md-5 col-sm-5 col-sm-5 col-5 readmore">
-      J'invite un proche
-      </button>
-    </form>
-  </div>
 
 <?php
 
