@@ -18,6 +18,6 @@ class TribeController extends MainController
 
         wp_delete_post($tribeId);
         // redirection
-        wp_redirect(get_home_url() . '/single-photoDetail' );
+        wp_redirect(get_home_url() . '/single-private-page' );
     }
 }

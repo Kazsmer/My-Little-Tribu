@@ -135,8 +135,8 @@ class Router
        
 
         add_rewrite_rule(
-            'processUpload/?$',
-            'index.php?custom-route=process_upload',
+            'process-upload/?$',
+            'index.php?custom-route=process-upload',
             'top'
         );
 
@@ -148,8 +148,8 @@ class Router
 
 
         add_rewrite_rule(
-            'single-photoDetail/?$',
-            'index.php?custom-route=single-photoDetail',
+            'single-private-page/?$',
+            'index.php?custom-route=single-private-page',
             'top'
         );
 
@@ -246,12 +246,12 @@ class Router
                 $controller->uploadPhoto();
             }
 
-            elseif ($customRouteParameter === 'process_upload') {
+            elseif ($customRouteParameter === 'process-upload') {
                 $controller = new PhotoController();
                 $controller->processUpload();
             }
 
-            elseif ($customRouteParameter === 'single-photoDetail') {
+            elseif ($customRouteParameter === 'single-private-page') {
                 $controller = new PhotoController();
                 $controller->displayPhoto();
             }

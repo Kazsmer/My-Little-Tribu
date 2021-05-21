@@ -23,7 +23,7 @@ get_header();
           if (is_user_logged_in()) :
             // $current_user = wp_get_current_user();
         ?>
-          <form action="<?=get_home_url();?>/single-photoDetail" method="post">
+          <form action="<?=get_home_url();?>/single-private-page" method="post">
             <button class="col-lg-5 col-md-5 col-sm-5 col-sm-5 col-5 readmore mt-3">
           </form>
           J'y vais
