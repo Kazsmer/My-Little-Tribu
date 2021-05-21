@@ -53,7 +53,7 @@ class PhotoController extends MainController
         $postId = filter_input(INPUT_GET, 'id');
         wp_delete_post($postId);
 
-        // redirection https://developer.wordpress.org/reference/functions/wp_redirect/
+        wp_redirect(get_home_url() . '/single-photoDetail' );
     }
 
 }
