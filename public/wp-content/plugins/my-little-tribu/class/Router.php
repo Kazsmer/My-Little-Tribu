@@ -171,6 +171,12 @@ class Router
             'top'
         );
 
+        add_rewrite_rule(
+            'guest-delete/?$',
+            'index.php?custom-route=guest-delete',
+            'top'
+        );
+
 
 
         // wordpress enregistre le url en base de donnée. Etant donné que nous déclarons une nouvelle route, de façon "brutale" nous forçons wordpress à rafraichir sont cache d'url
@@ -274,6 +280,11 @@ class Router
             elseif($customRouteParameter === 'user-invitation-success') {
                 $controller = new UserController();
                 $controller-> invitationSuccess();
+            }
+
+            elseif($customRouteParameter === 'guest-delete') {
+                $controller = new GuestTribeModel();
+                $controller-> guestDelete();
             }
 
             else {
