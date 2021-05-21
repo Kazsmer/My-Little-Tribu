@@ -63,11 +63,17 @@ get_header();
       <div class="site-section pb-0">
         <div class="container">
           <div class="row align-items-stretch">
-            <div class="col-md-8" data-aos="fade-up">
+            <div class="col-md-7" data-aos="fade-up">
               <img src="<?php the_post_thumbnail_url() ?>" alt="Image" class="img-fluid">
             </div>
-            <div class="col-md-3 ml-auto" data-aos="fade-up" data-aos-delay="100">
-              <div class="sticky-content">
+            <div class="col-md-4 ml-auto" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="h3 heading mb-1">Laissez un commentaire !</h3>
+                <?php 
+                if (comments_open() || get_comments_number()){
+                  comments_template();
+                } 
+                ?>
+              <!--<div class="sticky-content">
                 <h3 class="h3">Doe Garcia</h3>
                 <p class="mb-4"><span class="text-muted">My super tribu</span></p>
 
@@ -76,15 +82,7 @@ get_header();
 
                 </div>
               </div>
-              <div class="sticky-content mt-4">
-                <h3 class="h3">Doe Marietta</h3>
-                <p class="mb-4"><span class="text-muted">My super tribu</span></p>
-
-                <div>
-                  <p>Marietta ! :)</p>
-
-                </div>
-              </div>
+              </div>-->
             </div>
           </div>
         </div>
@@ -93,25 +91,8 @@ get_header();
 
       <div class="site-section pb-0">
         <div class="container">
-          <div class="row justify-content-center text-center mb-4">
+          <div class="row mb-4">
             <div class="col-12">
-              <h3 class="h3 heading">Laissez un commentaire !</h3>
-              <?php comment_form([
-                'title_reply' => '',
-                'class_container' => 'col-12',
-                'class_form' => 'col-12',
-                'class_submit' => 'col-12'
-                ])?>
-              <form action="">
-                <div class="form-group w-100">
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                <div class="center">
-                  <button class="readmore d-block w-50">
-                    Ajouter un commentaire
-                  </button>
-                </div>
-              </form>
             </div>
           </div>
           <div class="justify-content-end">
