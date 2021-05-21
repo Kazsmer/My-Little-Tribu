@@ -29,7 +29,7 @@ class PhotoController extends MainController
         echo '</div>'; */
 
 
-        $this->show('single-photoDetail.php');
+        $this->show('single-private-page.php');
 
     }
 
@@ -53,7 +53,7 @@ class PhotoController extends MainController
         $postId = filter_input(INPUT_GET, 'id');
         wp_delete_post($postId);
 
-        wp_redirect(get_home_url() . '/single-photoDetail' );
+        wp_redirect(get_home_url() . '/single-private-page' );
     }
 
 }
