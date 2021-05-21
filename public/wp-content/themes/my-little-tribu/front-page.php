@@ -14,15 +14,31 @@ get_header();
       <div class="container h-100 d-flex align-items-center">
         <div class="row mb-5 w-100">
           <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
-            <h2 class="h2-img mb-3">Rejoins ta tribu !</h2>
+            <h2 class="h2-img mb-4">Rejoins ta tribu !</h2>
             <div>
               <p class="mb-2">Le site pour partager des photos et vidéos dans un espace privé</p>
             </div>
-            <form action="<?=get_home_url();?>/user/register" method="post">
-              <button class="col-lg-5 col-md-5 col-sm-5 col-sm-5 col-5 readmore">
-            </form>
-            S'inscrire
-            </button>
+            
+        <?php
+          if (is_user_logged_in()) :
+            // $current_user = wp_get_current_user();
+        ?>
+          <form action="<?=get_home_url();?>/single-photoDetail" method="post">
+            <button class="col-lg-5 col-md-5 col-sm-5 col-sm-5 col-5 readmore mt-3">
+          </form>
+          J'y vais
+          </button>   
+              
+        <?php else: ?>
+          <form action="<?=get_home_url();?>/user/register" method="post">
+                <button class="col-lg-5 col-md-5 col-sm-5 col-sm-5 col-5 readmore mt-3">
+              </form>
+                Inscris-toi
+              </button>
+
+        <?php endif; ?>
+
+
           </div>
         </div>
       </div>
