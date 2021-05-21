@@ -5,7 +5,6 @@ namespace MyLittleTribu\Controller;
 use MyLittleTribu\Model\CoreModel;
 use MyLittleTribu\Model\WPUserModel;
 
-
 class PhotoController extends MainController
 {
     public function uploadPhoto()
@@ -15,7 +14,7 @@ class PhotoController extends MainController
 
     public function processUpload()
     {
-        $r = require( get_template_part('process_upload') );
+        require( get_template_part('process_upload') );
         //$this->show('process_upload.php');
     }
 
@@ -46,21 +45,17 @@ class PhotoController extends MainController
  */
     }
 
+    public function deletePhoto () {
 
-    function wp_delete_post($postid = 0, $force_delete = false)
-    {
-        global $wpdb;
-     
-        $post = $wpdb->get_row($wpdb->prepare("SELECT * FROM $wpdb->posts WHERE ID = %d", $postid));
-     
-        if (! $post) {
-            return $post;
-        }
-     
-        $post = get_post($post);
+        // DOC https://developer.wordpress.org/reference/functions/wp_delete_post/
+
+        // $postId = $_GET['id'];
+        $postId = filter_input(INPUT_GET, 'id');
+        wp_delete_post($postId);
+
+        wp_redirect(get_home_url() . '/single-photoDetail' );
     }
 
+}
 
-
-    }
-
+?>

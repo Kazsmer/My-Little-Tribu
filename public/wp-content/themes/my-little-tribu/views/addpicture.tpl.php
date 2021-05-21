@@ -45,24 +45,55 @@ get_header();
 
                 <?php
                   $user = wp_get_current_user();
-                  // $user = $user->ID;
-                  //var_dump($user);die;
-
-                  $guestTribeModel = new GuestTribeModel();
-                  $tribeParticipations = $guestTribeModel->getTribeByGuestId($user->ID);
-
-                  // pour chaque association guest/tribe
-                  echo '<fieldset>';
-                   echo '<div>';
-                     echo '<select class="custom-select" id="inputGroupSelect04" name="tribe" aria-label="Example select with button addon">';
-                      echo '<option selected> Choisis ta Tribu </option>';
-                      foreach ($tribeParticipations as $participation) {
-                        $tribe = $participation->getTribe();
-                        echo '<option value="'. $tribe->ID . '">' . $tribe->post_title . '</option>';
-                      }
-                     echo '</select>';
-                   echo '<div>';
-                  echo '</fieldset>';
+                  $userID = $user->ID;
+                  $user_info = get_userdata($userID);
+                  $userRoles = $user_info->roles[0];
+                  if($userRoles === 'guest'){
+                    $guestTribeModel = new GuestTribeModel();
+                    $tribeParticipations = $guestTribeModel->getTribeByGuestId($user->ID);
+  
+                    // pour chaque association guest/tribe
+                    echo '<fieldset>';
+                     echo '<div>';
+                       echo '<select class="custom-select" id="inputGroupSelect04" name="tribe" aria-label="Example select with button addon">';
+                        echo '<option selected> Choisis ta Tribu </option>';
+                        foreach ($tribeParticipations as $participation) {
+                          $tribe = $participation->getTribe();
+                          echo '<option value="'. $tribe->ID . '">' . $tribe->post_title . '</option>';
+                        }
+                       echo '</select>';
+                     echo '<div>';
+                    echo '</fieldset>';
+                  }
+                  else{
+                    $usertribe = new WP_Query( array( 'author' => $userID, 'post_type' => 'tribe' ) );
+                    //if(!empty($chosetribe)){
+                      $chosetribe = $usertribe->posts[0];
+  
+                      $guestTribeModel = new GuestTribeModel();
+                      $tribeParticipations = $guestTribeModel->getTribeByGuestId($user->ID);
+                    //}
+  
+                    // pour chaque association guest/tribe
+                    echo '<fieldset>';
+                     echo '<div>';
+                       echo '<select class="custom-select" id="inputGroupSelect04" name="tribe" aria-label="Example select with button addon">';
+                        echo '<option selected> Choisis ta Tribu </option>';
+                        echo '<option value="' . $chosetribe->ID .'">' . $chosetribe->post_title . '</option>';
+  
+                        foreach ($tribeParticipations as $participation) {
+                          if(!empty($participation)){
+                            $tribe = $participation->getTribe();
+                            echo '<option value="'. $tribe->ID . '">' . $tribe->post_title . '</option>';
+                          }
+                          else {
+                            echo '';
+                          }
+                        }
+                       echo '</select>';
+                     echo '<div>';
+                    echo '</fieldset>';
+                  }
 
                   ?>
 

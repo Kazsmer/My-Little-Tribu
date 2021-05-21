@@ -4,6 +4,7 @@ namespace MyLittleTribu\Model;
 
 use WP_Query;
 
+
 // cette classe va nous permettre de mutualiser certains traitement sur la base de donnée
 class TribeModel extends CoreModel
 {

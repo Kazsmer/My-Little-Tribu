@@ -10,7 +10,7 @@
         ?>
 
         <section>
-            <a href="<?=get_home_url();?>/user/delete">Confirmer la suppression</a>
+            <a href="<?=wp_delete_post(($postid = 0,  $force_delete = false))"> Confirmer la suppression</a>
 
             <br/>
 
