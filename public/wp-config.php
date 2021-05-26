@@ -46,14 +46,14 @@ define( 'DB_COLLATE', '' );
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',         '$2y$10$DYj1uqxYR1XxobWFNv/Nwu.5qnhnrimzB5jFf2HBUGxEmE8YNzwpW' );
-define( 'SECURE_AUTH_KEY',  '$2y$10$LNt8TRYJww/CVsELyMYe7uHVJQvRrlWnEIMiPLVPJZ3U1KjnoXJzy' );
-define( 'LOGGED_IN_KEY',    '$2y$10$rhkTnBs9e2IaCpV.pWEiI.1hYkO0gfnKYC49LJXdaV.yOCrjr.A7q' );
-define( 'NONCE_KEY',        '$2y$10$Zbzi7O8kQc.eNSLGq/H2MuYAXq2uKSjGUKdoXnkiJEe1DDP7Vy2tO' );
-define( 'AUTH_SALT',        '$2y$10$GXe3ez6UM8KPKzxZi6kYtu4Hb6FojxmVf9ozuFRHyTIU.V79oXQJa' );
-define( 'SECURE_AUTH_SALT', '$2y$10$82t2kHGnrXO1rml63VILq.46TkRvXeM8sAXkwHE1I1Hfeloo/bhZu' );
-define( 'LOGGED_IN_SALT',   '$2y$10$yqebCIZ44/tbOaM9NzlskeBiDS4vMW86ev5rFP2DsYL6wgevvXFQW' );
-define( 'NONCE_SALT',       '$2y$10$GA38X/MDkDJJb1m9cjk2DOnNoTKh38Hs5.eTVvEF.KFxn7v2OHgJq' );
+define( 'AUTH_KEY',         '$2y$10$L6cU8FjyrEwC/7FepIgBEe9X3Yqpyr/vPY3A00o70dlJ6AnQG3slq' );
+define( 'SECURE_AUTH_KEY',  '$2y$10$HSu8SVDgjfPqq3/ff9wQZ.Dln1YB0ZxcW2pmVljoGcvHAAJUNVa2O' );
+define( 'LOGGED_IN_KEY',    '$2y$10$eiuVp7.Ytt7GpQ4NFE88lOk5LqSoeaztOdyiqxvw3S8TEElmlksgq' );
+define( 'NONCE_KEY',        '$2y$10$vUurTQdJEim8Qtx222RUWOl5k8UiU2luumeFLYMHgEnPKYEZdX1qi' );
+define( 'AUTH_SALT',        '$2y$10$DmIL0uhglIxZ5D354MwTXOX0HL5HlgumMYzCWGS2/VflPEy4FyAnK' );
+define( 'SECURE_AUTH_SALT', '$2y$10$vY7Ht76SH.1CrIR07vDG8OT/qJQhYK2eBe15NumQlMonKtTz3wHcy' );
+define( 'LOGGED_IN_SALT',   '$2y$10$ARew3DJb8aH.bycjImBpXuuPcUtK0Jsyq92leSGvFoEVyRRuTlqkq' );
+define( 'NONCE_SALT',       '$2y$10$Za7ToPZnfDyZwzXHMRBdNubEk5K4MyqywOvnzLg3pTgwmtxhKK8AW' );
 
 /**#@-*/
 
@@ -79,7 +79,9 @@ $table_prefix = 'wp_';
  */
 define( 'WP_DEBUG', true );
 
-    define('WP_HOME', rtrim ( 'http://localhost/projet-my-little-tribu/public', '/' ));
+
+
+    define('WP_HOME', rtrim ( 'http://ec2-3-95-14-27.compute-1.amazonaws.com/projet-my-little-tribu/public/', '/' ));
     define('WP_SITEURL', WP_HOME . '/wp');
     define('WP_CONTENT_URL', WP_HOME . '/wp-content');
     define('WP_CONTENT_DIR', __DIR__ . '/wp-content');
